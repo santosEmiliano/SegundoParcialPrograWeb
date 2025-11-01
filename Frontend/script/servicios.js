@@ -25,17 +25,24 @@ const login = async (usuario, contrasena) => {
     let data;
 
     try {
-      data = await res.json();
+      data = await respuesta.json();
     } catch (parseErr) {
       console.warn("Respuesta no  es JSON del servidor", parseErr);
       data = {};
     }
 
     console.log(data);
+
+    localStorage.setItem('token', JSON.stringify(data.token));
   } catch (error) {
     console.error("Error al llamar a la API:", error);
     alert("Error al llamar al servidor: " + error.message);
   }
 };
 
-module.exports = { start, login };
+const servicios = {
+  start, 
+  login
+};
+
+export default servicios;

@@ -1,4 +1,4 @@
-const servicios = require("./servicios");
+import servicios from "./servicios.js";
 
 servicios.login("Santos", "Santos123");
 
