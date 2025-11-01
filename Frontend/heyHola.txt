@@ -1,2 +1,0 @@
-Ignoren esto, nomas es para poder hacer bien el primer commit.
-Borren este archivo cuando hagan su primer commit porfa.
