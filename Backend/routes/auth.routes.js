@@ -2,15 +2,40 @@ const express = require("express");
 const { login, logout } = require("../controllers/auth.controller");
 const { verifyToken } = require("../middleware/auth.middleware");
 const { startQuiz, submitAnswers } = require("../controllers/questions.controller");
+const { saveMessage, sendPublications } = require("../controllers/publications.controller");
 const router = express.Router();
 
-// Ruta publica para el login
+//          RUTAS LOGIN/LOGOUT
+
+//Ruta de login (Sin proteccion)
 router.post("/login", login);
 
+//Ruta de logout (Proteccion por token)
 router.post("/logout", verifyToken, logout);
 
-router.post("/start", verifyToken, startQuiz);
+//          RUTAS DE CUESTIONARIO
 
+//Ruta para iniciar cuestionario (Proteccion por token)
+router.get("/start", verifyToken, startQuiz);
+
+//Ruta para revisar cuestionario (Proteccion por token)
 router.post("/submit", verifyToken, submitAnswers);
+
+//          RUTAS DE FORO DE PUBLICACIONES
+
+//Ruta de captura de publicacion (Proteccion por token)
+router.post("/captura", verifyToken, saveMessage);
+
+//Ruta para obtener las publicaciones (Proteccion por token)
+router.get("/lectura", verifyToken, sendPublications)
+
+//          RUTAS DE VERIFICACION
+
+//Ruta de verificacion de compra
+router.post("/compra", verifyToken, checkBuy);
+
+//Ruta de verificacion de examen realizado
+router.post("/pasado", verifyToken, checkExam);
+
 
 module.exports = router;

@@ -74,7 +74,8 @@ const submitAnswers = (req, res) => {
         message: "Respuestas evaluadas.",
         score,
         total: 8,
-        details
+        details: details,
+        approved: score>=7 ? true : false
     });
 }
 
