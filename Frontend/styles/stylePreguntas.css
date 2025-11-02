@@ -148,3 +148,9 @@ label:hover {
 #resultado .card.bad {
   border-color: #e67ea3;
 }
+
+.btns{
+  width: 60vw;
+  display: flex;
+  justify-content: space-between;
+}
