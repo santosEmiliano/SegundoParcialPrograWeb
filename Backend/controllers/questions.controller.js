@@ -72,7 +72,7 @@ const submitAnswers = (req, res) => {
     // Enviamos todo
     return res.status(200).json({
         message: "Respuestas evaluadas.",
-        score,
+        score: score,
         total: 8,
         details
     });

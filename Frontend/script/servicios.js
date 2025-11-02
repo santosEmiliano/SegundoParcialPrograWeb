@@ -87,16 +87,28 @@ const start = async () => {
 
     if (!respuesta.ok) throw new Error("Error en la respuesta");
     const datos = await respuesta.json();
-    
-    return datos.questions;
 
+    return datos.questions;
   } catch (error) {
     console.error("Error al llamar a la API:", error);
     alert("Error al llamar al servidor: " + error.message);
   }
 };
 
-const submit = async () => {};
+const submit = async (respuestasUsuario) => {
+  const res = await fetch("http://localhost:3000/api/submit", {
+    method: "POST",
+    headers: { 
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("token")}`
+    },
+    body: JSON.stringify({ answers: respuestasUsuario }),
+  });
+
+  const data = await res.json();
+
+  console.log(data);
+};
 
 function actualizarSesion() {
   const userName = localStorage.getItem("cuenta");
