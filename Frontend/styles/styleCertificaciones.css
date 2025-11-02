@@ -11,64 +11,84 @@ body {
   font-family: "Electrolize", sans-serif;
 }
 
-/*contenedor*/
+/*contenedor general*/
 .container-grid {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   scroll-snap-align: start;
+  padding: 2rem 0;
 }
 
-/*nombre*/
+/*tarjeta*/
+.card-certificacion {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: auto 1fr auto;
+  gap: 1.5rem;
+  width: 85%;
+  max-width: 75rem;
+  background: #06031f;
+  border: 0.125rem solid rgba(0, 255, 255, 0.3);
+  border-radius: 1.25rem;
+  padding: 2rem;
+  box-shadow: 0 0 1.875rem rgba(0, 255, 255, 0.2);
+  transition: all 0.4s ease;
+}
+
+.card-certificacion:hover {
+  border-color: #49c0ec;
+  box-shadow: 0 0 0.4375rem #49c0ec, 0 0 0.75rem #49c0ec, 0 0 1.375rem #41c7d4,
+    0 0 2.3125rem #8c79b4;
+  animation: cardGlow 1.5s infinite alternate;
+}
+
 .div1 {
-  font-size: 2.8rem;
+  grid-area: 1 / 1 / 2 / 3;
+  font-size: 2.5rem;
   text-align: start;
   margin-left: 1rem;
 }
 
-/*imagen*/
 .div2 {
-  grid-column: 2 / 3;
-  grid-row: 1 / span 2;
+  grid-area: 2 / 2 / 3 / 3;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
 .imagen-curso {
   width: 100%;
-  height: 100%;
+  max-width: 28rem;
+  height: auto;
   object-fit: cover;
-  border: 0.5rem solid rgb(255, 255, 255);
+  border: 0.5rem solid #fff;
   border-radius: 0.5rem;
   transition: 0.4s ease-in;
 }
-
 .imagen-curso:hover {
   transform: scale(1.015);
   background-color: rgba(0, 255, 255, 0.3);
 }
 
-/*descripcion*/
+/*descripción*/
 .div3 {
-  grid-column: 1 / 2;
-  grid-row: 2 / 3;
-  font-size: 0.9rem;
+  grid-area: 2 / 1 / 3 / 2;
+  font-size: 0.95rem;
   text-align: justify;
-  margin: 1rem;
   line-height: 1.6;
   background: rgba(255, 255, 255, 0.05);
-  padding: 15px;
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  overflow-y: visible;
+  padding: 1rem;
+  border-radius: 0.625rem;
+  border: 0.063rem solid rgba(255, 255, 255, 0.15);
+  max-height: 22rem;
+  overflow-y: auto;
+  scrollbar-width: none;
 }
 
 /*examen*/
 .div4 {
-  grid-column: 1 / 2;
-  grid-row: 3 / 4;
+  grid-area: 3 / 1 / 4 / 2;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -76,25 +96,24 @@ body {
 
 /*pago*/
 .div5 {
-  grid-column: 2 / 3;
-  grid-row: 3 / 4;
+  grid-area: 3 / 2 / 4 / 3;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 15px;
+  gap: 1rem;
   font-size: 1.8rem;
   color: #a3cc54;
 }
 
+/*botones*/
 .pagar,
 .btn-iniciar-examen {
-  height: 8rem;
+  height: 6rem;
   width: 80%;
-  text-align: center;
   background-color: #040216;
-  font-size: 32px;
-  border-radius: 8px;
-  border-width: 4px;
+  font-size: 1.8rem;
+  border-radius: 0.5rem;
+  border-width: 0.25rem;
   cursor: pointer;
   transition: 0.3s ease-in;
   display: flex;
@@ -102,66 +121,37 @@ body {
   align-items: center;
   text-decoration: none;
 }
-
 .btn-iniciar-examen {
-  padding-left: 2rem;
-  text-align: center;
   color: #49c0ec;
   border-color: #49c0ec;
-  gap: 25px;
+  gap: 1.2rem;
 }
-
 .btn-iniciar-examen:hover {
   transform: scale(1.05);
   color: #368baa;
   border-color: #368baa;
-  box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
+  box-shadow: 0 0 1.875rem rgba(0, 255, 255, 0.2);
 }
-
 .pagar {
   color: #a3cc54;
   border-color: #a3cc54;
-  box-shadow: 0 0 30px rgba(57, 243, 0, 0.2);
+  box-shadow: 0 0 1.875rem rgba(57, 243, 0, 0.2);
 }
-
 .pagar:hover {
   transform: scale(1.05);
-  background-color: #000000;
+  background-color: #000;
   color: #78ac18;
   border-color: #78ac18;
 }
 
-/*card*/
-.card-certificacion {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  grid-template-rows: 0.3fr 5fr 0.3fr;
-  gap: 20px;
-  width: 85%;
-  height: 85%;
-  background: #06031f;
-  border: 2px solid rgba(0, 255, 255, 0.3);
-  border-radius: 20px;
-  padding: 40px;
-  box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
-  transition: all 0.4s ease;
-}
-
-.card-certificacion:hover {
-  border-color: #49c0ec;
-  box-shadow: 0 0 7px #49c0ec, 0 0 12px #49c0ec, 0 0 22px #41c7d4,
-    0 0 37px #8c79b4;
-  animation: cardGlow 1.5s infinite alternate;
-}
-
-/*Animación*/
+/* animación */
 @keyframes cardGlow {
   from {
-    box-shadow: 0 0 3px #49c0ec, 0 0 6px #41c7d4, 0 0 8px #8c79b4,
-      0 0 14px #49c0ec;
+    box-shadow: 0 0 0.1875rem #49c0ec, 0 0 0.375rem #41c7d4, 0 0 0.5rem #8c79b4,
+      0 0 0.875rem #49c0ec;
   }
   to {
-    box-shadow: 0 0 8px #49c0ec, 0 0 14px #41c7d4, 0 0 20px #8c79b4,
-      0 0 26px #49c0ec;
+    box-shadow: 0 0 0.5rem #49c0ec, 0 0 0.875rem #41c7d4, 0 0 1.25rem #8c79b4,
+      0 0 1.625rem #49c0ec;
   }
 }
