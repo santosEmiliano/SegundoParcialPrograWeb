@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Certificaciones</title>
+    <link rel="stylesheet" href="styles/styleBase.css" />
+    <link rel="stylesheet" href="styles/stylePreguntas.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-right">
+        <a href="index.html" class="nav-logo">SCCourses</a>
+        <img src="" alt="" />
+      </div>
+      <div class="nav-left">
+        <a href="index.html" class="nav-link">Inicio</a>
+        <a href="certificaciones.html" class="nav-link">Certificaciones</a>
+        <a href="contacto.html" class="nav-link">Contacto</a>
+        <a href="nosotros.html" class="nav-link">Sobre Nosotros</a>
+        <span id="userName" class="user-name"></span>
+        <button id="logInbtn" title="Login">
+          <span class="loginStyle">Iniciar Sesión</span>
+        </button>
+        <button id="logOutbtn" title="LogOut">
+          <span class="loginStyle">Cerrar Sesión</span>
+        </button>
+        <button
+          id="logoutBtn"
+          class="icon-btn"
+          title="Logout"
+          style="display: none"
+        >
+          <span class="logout-icon">Salir Sesión</span>
+        </button>
+      </div>
+    </nav>
+
+    <main>
+      <section>
+        <button id="btnPreguntas">Consultar preguntas</button>
+      </section>
+      <section>
+        <form style="display: none;" id="quizForm">
+          <div id="pregunta"></div>
+          <button type="submit">Enviar respuesta</button>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <navbar class="nav-footer">
+        <h5>aaaa</h5>
+      </navbar>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="script/app.js" type="module"></script>
+  </body>
+</html>

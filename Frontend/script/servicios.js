@@ -78,15 +78,22 @@ const comprar = async () => {
 
 const start = async () => {
   try {
-    const respuesta = await fetch("http://localhost:3000/api/questions");
+    const respuesta = await fetch("http://localhost:3000/api/start", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
+
     if (!respuesta.ok) throw new Error("Error en la respuesta");
     const datos = await respuesta.json();
+    
+    return datos.questions;
+
   } catch (error) {
     console.error("Error al llamar a la API:", error);
     alert("Error al llamar al servidor: " + error.message);
   }
-
-  console.log(datos);
 };
 
 const submit = async () => {};
