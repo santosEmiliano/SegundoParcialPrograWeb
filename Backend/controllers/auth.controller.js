@@ -1,5 +1,5 @@
 const users = require("../model/users.json");
-const { createSession } = require("../middleware/auth.middleware");
+const { createSession, deleteSession } = require("../middleware/auth.middleware");
 
 exports.login = (req, res) => {
     // Extrae 'cuenta' del body de la petición (protección contra body undefined)

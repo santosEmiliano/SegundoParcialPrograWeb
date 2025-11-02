@@ -11,6 +11,6 @@ router.post("/logout", verifyToken, logout);
 
 router.post("/start", verifyToken, startQuiz);
 
-router.post("/submit", verifiyToken, submitAnswers);
+router.post("/submit", verifyToken, submitAnswers);
 
 module.exports = router;
