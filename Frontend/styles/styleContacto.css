@@ -1,0 +1,119 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  margin-top: 5rem;
+}
+
+h6 {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #aaa;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+/*contenedor formulario */
+.formulario-container {
+  width: 80%;
+  min-width: 50rem;
+  background: rgb(255, 255, 255, 0.05);
+  border: 1px solid rgb(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  padding: 3rem;
+  display: flex;
+  justify-content: center;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+  margin: 5rem;
+  transition: 0.4s ease-in;
+}
+
+.formulario-container:hover {
+  border-color: #49c0ec;
+  box-shadow: 0 0 0.4375rem #49c0ec, 0 0 0.75rem #49c0ec, 0 0 1.375rem #41c7d4,
+    0 0 2.3125rem #8c79b4;
+  animation: cardGlow 1.5s infinite alternate;
+}
+
+/*formulario grid*/
+form {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto auto auto;
+  gap: 2rem;
+  width: 100%;
+}
+
+/*cascarón div*/
+.div1 {
+  grid-area: 1 / 1 / 2 / 2;
+  margin-right: 2rem;
+}
+.div2 {
+  grid-area: 1 / 2 / 2 / 4;
+  margin-right: 2rem;
+}
+.div3 {
+  grid-area: 2 / 1 / 3 / 4;
+  margin-right: 2rem;
+}
+.div4 {
+  grid-area: 3 / 1 / 4 / 2;
+  margin-right: 2rem;
+}
+
+/*titulos*/
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.textFrom {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  border-radius: 0.5rem;
+  border: none;
+  outline: none;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 1rem;
+  resize: none;
+}
+
+.textFrom::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* botón enviar */
+.div4 input[type="submit"] {
+  background: #00ffff;
+  border: none;
+  color: #000;
+  font-weight: bold;
+  padding: 0.9rem 1.5rem;
+  border-radius: 0.6rem;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.div4 input[type="submit"]:hover {
+  background: #00cccc;
+  transform: scale(1.05);
+}

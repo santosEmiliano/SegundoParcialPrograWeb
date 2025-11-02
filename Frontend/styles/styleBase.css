@@ -74,11 +74,15 @@ body::-webkit-scrollbar {
 .section-3 h1 {
   text-align: center;
 }
+
 /*Footer*/
 footer {
-  background: #000;
   text-align: center;
-  padding: 30px;
+  padding: 1rem 0;
+  background: #06031f;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  margin-top: auto;
 }
 
 .electrolize-regular {

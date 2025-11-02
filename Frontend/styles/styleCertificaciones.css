@@ -7,8 +7,6 @@ body {
   overflow-y: scroll;
   scroll-behavior: smooth;
   background: #02000c;
-  color: #fff;
-  font-family: "Electrolize", sans-serif;
 }
 
 /*contenedor general*/
@@ -142,16 +140,4 @@ body {
   background-color: #000;
   color: #78ac18;
   border-color: #78ac18;
-}
-
-/* animación */
-@keyframes cardGlow {
-  from {
-    box-shadow: 0 0 0.1875rem #49c0ec, 0 0 0.375rem #41c7d4, 0 0 0.5rem #8c79b4,
-      0 0 0.875rem #49c0ec;
-  }
-  to {
-    box-shadow: 0 0 0.5rem #49c0ec, 0 0 0.875rem #41c7d4, 0 0 1.25rem #8c79b4,
-      0 0 1.625rem #49c0ec;
-  }
 }
