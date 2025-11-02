@@ -93,6 +93,7 @@ main section {
   border-width: 4px;
   cursor: pointer;
   transition: 0.3s ease-in;
+  align-content: space-between;
 }
 
 .grid-cursos button:hover {
