@@ -4,15 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="styles/styleBase.css" />
+    <link rel="stylesheet" href="styles/styleInicio.css" />
   </head>
-  <body>
+  <body class="electrolize-regular">
     <nav class="navbar">
-      <div class="nav-right">
+      <div class="nav-left">
         <a href="index.html" class="nav-logo">SCCourses</a>
         <img src="" alt="" />
       </div>
-      <div class="nav-left">
+      <div class="nav-right">
         <a href="index.html" class="nav-link">Inicio</a>
         <a href="certificaciones.html" class="nav-link">Certificaciones</a>
         <a href="contacto.html" class="nav-link">Contacto</a>
@@ -33,34 +34,118 @@
     </nav>
 
     <main>
-      <section>
-        <div class="bienvenida">Bienvendio a nuestros cursos piteros</div>
+      <section class="section-1">
+        <div class="image-fondo">
+          <h1>Bienvenido a sexolandia</h1>
+        </div>
       </section>
-
-      <section>
+      <h1 class="titulo">Scrollea para ver los cursos</h1>
+      <section class="section-2">
         <div class="grid-cursos">
           <div class="card-react">
-            <h1>1</h1>
+            <h1 class="card-titulo">Curso de React</h1>
+            <img src="media/react.png" alt="react" />
+            <div class="texto">
+              <p>
+                Domina la biblioteca líder para crear interfaces de usuario
+                modernas y fluidas. Con React, aprenderás a construir
+                aplicaciones web single-page (SPA) de forma rápida y eficiente,
+                utilizando una poderosa arquitectura basada en componentes
+                reutilizables. Es la herramienta más demandada por las startups
+                y grandes empresas tecnológicas para desarrollar vistas
+                interactivas y escalables con JavaScript.
+              </p>
+              <button class="btnCursos">
+                Da click aquí para hacer el curso
+              </button>
+            </div>
           </div>
           <div class="card-assembly">
-            <h1>2</h1>
+            <h1 class="card-titulo">Curso de Assembly</h1>
+            <img src="media/assembly.png" alt="assembly" />
+            <div class="texto">
+              <p>
+                Baja al nivel más fundamental del software y aprende a
+                comunicarte directamente con el procesador. El lenguaje
+                ensamblador te da un control inigualable sobre el hardware,
+                permitiéndote optimizar el rendimiento al máximo y entender cómo
+                funcionan realmente los programas. Este curso es esencial para
+                el desarrollo de sistemas operativos, la ingeniería inversa y la
+                ciberseguridad avanzada.
+              </p>
+              <button class="btnCursos">
+                Da click aquí para hacer el curso
+              </button>
+            </div>
           </div>
           <div class="card-typescript">
-            <h1>3</h1>
+            <h1 class="card-titulo">Curso de TypeScript</h1>
+            <img src="media/typescript.png" alt="typescript" />
+            <div class="texto">
+              <p>
+                Lleva tu JavaScript al siguiente nivel con el superconjunto
+                desarrollado por Microsoft. TypeScript añade un sistema de tipos
+                estáticos opcionales que te permite detectar errores antes de
+                ejecutar el código, facilitando la creación de aplicaciones
+                robustas y escalables. Es la elección predilecta para proyectos
+                grandes, ya que mejora la legibilidad, el mantenimiento y la
+                colaboración en equipo.
+              </p>
+              <button class="btnCursos">
+                Da click aquí para hacer el curso
+              </button>
+            </div>
           </div>
           <div class="card-holyc">
-            <h1>4</h1>
+            <h1 class="card-titulo">Curso de Holy C</h1>
+            <img src="media/holyC.png" alt="holyC" />
+            <div class="texto">
+              <p>
+                Explora uno de los lenguajes más singulares jamás creados, el
+                corazón del sistema operativo TempleOS. Holy C es una variante
+                de C diseñada por Terry A. Davis, que se ejecuta directamente en
+                el kernel y se utiliza tanto para la shell como para las
+                aplicaciones. Este curso es una fascinante inmersión en una
+                filosofía de diseño de software radicalmente diferente, ideal
+                para mentes curiosas y entusiastas de los sistemas operativos
+                esotéricos.
+              </p>
+              <button class="btnCursos">
+                Da click aquí para hacer el curso
+              </button>
+            </div>
           </div>
+        </div>
+      </section>
+
+      <section class="section-3">
+        <div class="documental">
+          <h1>
+            ¡Aprende a programar desde cero con nuestro querdio amigo Holamundo!
+          </h1>
+          <iframe
+            width="1280"
+            height="720"
+            src="https://www.youtube.com/embed/pLlDy1Hlv54?si=-O9WTixKS5mF5aeh"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
         </div>
       </section>
     </main>
 
     <footer>
       <navbar class="nav-footer">
-        <h5>aaaa</h5>
+        <h5>
+          Todos los derechos reservados a mi CULOTE AHHHHHHHHH NO SE TE OLVIDE
+          QUITAR ESTO PENDEJO
+        </h5>
       </navbar>
     </footer>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
-    <script src="script/app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="script/app.js" type="module"></script>
   </body>
 </html>
