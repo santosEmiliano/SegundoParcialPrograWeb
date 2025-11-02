@@ -3,11 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contacto</title>
+    <title>Certificaciones</title>
     <link rel="stylesheet" href="styles/styleBase.css" />
-    <link rel="stylesheet" href="styles/styleConacto.css" />
+    <link rel="stylesheet" href="styles/stylePreguntas.css" />
   </head>
-  <body class="electrolize-regular">
+  <body>
     <nav class="navbar">
       <div class="nav-right">
         <a href="index.html" class="nav-logo">SCCourses</a>
@@ -38,16 +38,24 @@
 
     <main>
       <section>
-        <div class="formulario-container"></div>
+        <button id="btnPreguntas">Consultar preguntas</button>
+      </section>
+      <section>
+        <form style="display: none;" id="quizForm">
+          <div id="pregunta"></div>
+          <button type="submit">Enviar respuesta</button>
+        </form>
       </section>
     </main>
 
+    <div class="btns">
+      <button id="btnAnterior">Anterior Pregunta</button>
+      <button id="btnSiguiente">Siguiente Pregunta</button>
+    </div>
+
     <footer>
       <navbar class="nav-footer">
-        <h5>
-          Todos los derechos reservados a mi CULOTE AHHHHHHHHH NO SE TE OLVIDE
-          QUITAR ESTO PENDEJO
-        </h5>
+        <h5>aaaa</h5>
       </navbar>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

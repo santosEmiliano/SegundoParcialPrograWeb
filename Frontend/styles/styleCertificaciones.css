@@ -1,0 +1,155 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  scroll-snap-type: y proximity;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  background: #02000c;
+  color: #fff;
+  font-family: "Electrolize", sans-serif;
+}
+
+/*contenedor*/
+.container-grid {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  scroll-snap-align: start;
+}
+
+/*nombre*/
+.div1 {
+  font-size: 2.8rem;
+  text-align: start;
+  margin-left: 1rem;
+}
+
+/*imagen*/
+.div2 {
+  grid-column: 2 / 3;
+  grid-row: 1 / span 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imagen-curso {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: 0.5rem solid rgb(255, 255, 255);
+  border-radius: 0.5rem;
+  transition: 0.4s ease-in;
+}
+
+.imagen-curso:hover {
+  transform: scale(1.05);
+}
+
+/*descripcion*/
+.div3 {
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+  font-size: 1.3rem;
+  text-align: justify;
+  margin: 1rem;
+  line-height: 1.6;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  overflow-y: auto;
+}
+
+/*examen*/
+.div4 {
+  grid-column: 1 / 2;
+  grid-row: 3 / 4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*pago*/
+.div5 {
+  grid-column: 2 / 3;
+  grid-row: 3 / 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.div5 h6 {
+  font-size: 1.8rem;
+  color: #a3cc54;
+}
+
+.pagar,
+.btn-iniciar-examen {
+  height: 8rem;
+  width: 80%;
+  text-align: center;
+  background-color: #040216;
+  color: white;
+  font-size: 32px;
+  border-radius: 8px;
+  border-color: white;
+  border-width: 4px;
+  cursor: pointer;
+  transition: 0.3s ease-in;
+}
+
+.btn-iniciar-examen {
+  text-align: left;
+  justify-content: space-between;
+  padding-left: 2rem;
+  text-align: center;
+}
+
+.pagar:hover,
+.btn-iniciar-examen:hover {
+  transform: scale(1.05);
+  background-color: #000000;
+  color: rgb(189, 189, 189);
+  border-color: rgb(204, 203, 203);
+}
+
+/*card*/
+.card-certificacion {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 1fr 3fr 1fr;
+  gap: 20px;
+  width: 85%;
+  height: 85%;
+  background: #06031f;
+  border: 2px solid rgba(0, 255, 255, 0.3);
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
+  transition: all 0.4s ease;
+}
+
+.card-certificacion:hover {
+  border-color: #49c0ec;
+  box-shadow: 0 0 7px #49c0ec, 0 0 12px #49c0ec, 0 0 22px #41c7d4,
+    0 0 37px #8c79b4;
+  animation: cardGlow 1.5s infinite alternate;
+}
+
+/*Animación*/
+@keyframes cardGlow {
+  from {
+    box-shadow: 0 0 3px #49c0ec, 0 0 6px #41c7d4, 0 0 8px #8c79b4,
+      0 0 14px #49c0ec;
+  }
+  to {
+    box-shadow: 0 0 8px #49c0ec, 0 0 14px #41c7d4, 0 0 20px #8c79b4,
+      0 0 26px #49c0ec;
+  }
+}
