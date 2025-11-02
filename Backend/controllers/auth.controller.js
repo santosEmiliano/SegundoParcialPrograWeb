@@ -36,3 +36,23 @@ exports.login = (req, res) => {
     token: token // Token de sesión para usar en peticiones protegidas
     });
 };
+
+exports.logout = (req, res) => {
+  const token = req.token; // El token viene del middleware verifyToken
+  const userId = req.userId; // El userId viene del middleware verifyToken
+
+  console.log(`[LOGOUT] Usuario en sesión: ${userId} | Token: ${token} | Procede el logout`);
+
+  // Eliminar la sesión
+  const deleted = deleteSession(token);
+
+  if (deleted) {
+    return res.status(200).json({ 
+      mensaje: "Sesión cerrada correctamente" 
+    });
+  } else {
+    return res.status(404).json({ 
+      error: "Sesión no encontrada" 
+    });
+  }
+};
