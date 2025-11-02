@@ -29,7 +29,7 @@ main section {
 }
 
 .titulo {
-  padding-top: 17rem;
+  padding-top: 10rem;
   text-align: center;
   font-size: 40px;
 }
@@ -101,6 +101,10 @@ main section {
   background-color: #000000;
   color: rgb(189, 189, 189);
   border-color: rgb(204, 203, 203);
+}
+
+.video {
+  margin-bottom: 8rem;
 }
 
 /*Animaciones*/
