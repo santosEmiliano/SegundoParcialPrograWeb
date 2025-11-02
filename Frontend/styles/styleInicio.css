@@ -1,79 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Electrolize&display=swap");
-
-html,
-body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  scroll-behavior: smooth;
-  background: #02000c;
-  color: #fff;
-}
-
-/*ocultar scroll*/
-body::-webkit-scrollbar {
-  display: none;
-}
-
-/*Header */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #06031f;
-  color: #fff;
-  padding: 0.5rem 1.5rem;
-}
-
-/*titulo*/
-.nav-logo {
-  color: #fff;
-  font-size: 1.8rem;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-/*header */
-.nav-right {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.navbar button {
-  background-color: white
-  padding: 6px;
-  border-radius: 15px;
-  font-weight: bold;
-  height: 45px;
-}
-
-.navbar button:hover {
-  color: rgb(0, 0, 0);
-  background-color: rgb(255, 255, 255);
-  box-shadow: 0 0 15px 5px rgba(183, 0, 255, 0.8);
-  border-color: rgba(183, 0, 255, 0.8);
-  cursor: pointer;
-}
-
-.nav-link {
-  color: white;
-  text-decoration: none;
-  padding: 1rem 2em;
-  border-radius: 25px;
-  transition: box-shadow 0.3s ease, color 0.3s ease;
-  border: 2px solid transparent;
-}
-
-.nav-link:hover {
-  color: aqua;
-  box-shadow: 0 0 15px 5px rgba(0, 255, 255, 0.8);
-  border-color: aqua;
-}
-
-/*menu*/
 main section {
-  min-height: 100vh;
   display: grid;
   place-items: center;
 }
@@ -90,15 +15,23 @@ main section {
   animation-range: entry 0% cover 130%;
 }
 
-.section-1 .banner {
-  height: 600px;
-  width: 1280px;
-  transition: 0.6s ease-in;
-  border-radius: 5px;
+.image-fondo {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url("../media/banner.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 100%;
+  min-height: 600px;
 }
 
-.section-1 .banner:hover {
-  transform: scale(1.1);
+.titulo {
+  padding-top: 7rem;
+  text-align: center;
+  font-size: 40px;
 }
 
 /*imagenes*/
@@ -145,6 +78,7 @@ main section {
   padding: 8rem;
   background-color: #040216;
   border-radius: 20px;
+  text-align: justify;
 }
 
 .grid-cursos button {
@@ -166,16 +100,6 @@ main section {
   background-color: #000000;
   color: rgb(189, 189, 189);
   border-color: rgb(204, 203, 203);
-}
-
-.section-3 h1 {
-  text-align: center;
-}
-/*Footer*/
-footer {
-  background: #000;
-  text-align: center;
-  padding: 30px;
 }
 
 /*Animaciones*/
@@ -222,10 +146,4 @@ footer {
     opacity: 1;
     transform: scale(1);
   }
-}
-
-.electrolize-regular {
-  font-family: "Electrolize", sans-serif;
-  font-weight: 400;
-  font-style: normal;
 }

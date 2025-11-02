@@ -1,0 +1,96 @@
+main {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.titulo {
+  padding-left: 2rem;
+  padding-top: 5rem;
+  font-size: 40px;
+}
+.container-left {
+  text-align: justify;
+  padding: 2rem;
+  padding-right: 5rem;
+  font-size: 32px;
+}
+
+.container-grid {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  align-items: center;
+  gap: 2rem;
+  padding: 3rem 5%;
+}
+
+.container-right img {
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.container-right img:hover {
+  transform: scale(1.05);
+}
+
+/*Contenedores de fichas de trabajo*/
+.container-trabajadores {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  padding: 4rem 6%;
+}
+
+/*impares*/
+.container-trabajadores-impar {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  align-items: center;
+  gap: 2rem;
+}
+
+/*pares*/
+.container-trabajadores-par {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  align-items: center;
+  gap: 2rem;
+}
+
+.container-left-impar img,
+.container-right-par img {
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.container-left-impar img:hover,
+.container-right-par img:hover {
+  transform: scale(1.05);
+}
+
+.container-right-impar p,
+.container-left-par p {
+  color: #fff;
+  font-size: 1.2rem;
+  line-height: 1.8;
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 2rem;
+  border-radius: 15px;
+  text-align: justify;
+  min-height: 100px;
+}
+
+.container-right-impar h4,
+.container-left-par h4 {
+  color: #fff;
+  font-size: 2rem;
+  line-height: 1.8;
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 2rem;
+  border-radius: 15px;
+  text-align: justify;
+}

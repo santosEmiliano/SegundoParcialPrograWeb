@@ -1,0 +1,88 @@
+@import url("https://fonts.googleapis.com/css2?family=Electrolize&display=swap");
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  scroll-behavior: smooth;
+  background: #02000c;
+  color: #fff;
+}
+
+/*ocultar scroll*/
+body::-webkit-scrollbar {
+  display: none;
+}
+
+/*Header */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #06031f;
+  color: #fff;
+  padding: 0.5rem 1.5rem;
+}
+
+/*titulo*/
+.nav-logo {
+  color: #fff;
+  font-size: 1.8rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/*header */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.navbar button {
+  background-color: white;
+  padding: 6px;
+  border-radius: 15px;
+  font-weight: bold;
+  height: 45px;
+}
+
+.navbar button:hover {
+  color: rgb(0, 0, 0);
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 0 15px 5px rgba(183, 0, 255, 0.8);
+  border-color: rgba(183, 0, 255, 0.8);
+  cursor: pointer;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  padding: 1rem 2em;
+  border-radius: 25px;
+  transition: box-shadow 0.3s ease, color 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.nav-link:hover {
+  color: aqua;
+  box-shadow: 0 0 15px 5px rgba(0, 255, 255, 0.8);
+  border-color: aqua;
+}
+
+.section-3 h1 {
+  text-align: center;
+}
+/*Footer*/
+footer {
+  background: #000;
+  text-align: center;
+  padding: 30px;
+}
+
+.electrolize-regular {
+  font-family: "Electrolize", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
