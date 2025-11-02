@@ -84,4 +84,24 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     cargarPregunta();
   };
+
+  document.getElementById("evniarRespuestas").onclick = (e) => {
+    e.preventDefault();
+
+    const ids = Object.keys(respuestasUsuario);
+
+    const answersParaServidor = ids.map(preguntaIdString => {
+        const preguntaId = parseInt(preguntaIdString, 10);
+        
+        const respuestaSeleccionada = respuestasUsuario[preguntaIdString]; 
+        
+        return { 
+            id: preguntaId, 
+            answer: respuestaSeleccionada 
+        };
+    });
+
+    console.log(answersParaServidor);
+    servicios.submit(answersParaServidor);
+  }
 });
