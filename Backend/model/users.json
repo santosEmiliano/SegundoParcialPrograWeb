@@ -1,8 +1,8 @@
 [
-  { "cuenta": "Jose",     "contrasena": "Jose123" },
-  { "cuenta": "Harim",    "contrasena": "Harim123" },
-  { "cuenta": "Julian",    "contrasena": "Julian123" },
-  { "cuenta": "Santos",     "contrasena": "Santos123" },
-  { "cuenta": "Georgina",   "contrasena": "dieLehrerin" },
-  { "cuenta": "Guido", "contrasena": "PasenLista" }
+  { "cuenta": "Jose",     "nombre": "Jose Luis", "bandera": "false", "contrasena": "Jose123" },
+  { "cuenta": "Harim",    "nombre": "Harim Jesus", "bandera": "false", "contrasena": "Harim123" },
+  { "cuenta": "Julian",   "nombre": "Julian Emmanuel", "bandera": "false", "contrasena": "Julian123" },
+  { "cuenta": "Santos",   "nombre": "Emi Santos", "bandera": "false", "contrasena": "Santos123" },
+  { "cuenta": "Georgina", "nombre": "Mtra. Georgina", "bandera": "false", "contrasena": "dieLehrerin" },
+  { "cuenta": "Guido",    "nombre": "SuperGuido", "bandera": "false", "contrasena": "PasenLista" }
 ]
