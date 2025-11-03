@@ -8,6 +8,7 @@ const saveMessage = (req, res) => {
         //Guardamos todo
         const userId = req.userId;
         const mensaje = req.body.mensaje;
+        const correo = req.body.correo
 
         //Chcamos que haya algo
         if (!mensaje) {
@@ -35,6 +36,7 @@ const saveMessage = (req, res) => {
         const publicacion = {
             id: newId,
             userId: userId,
+            correo,
             text: mensaje,
             fecha: new Date().toISOString()
         };

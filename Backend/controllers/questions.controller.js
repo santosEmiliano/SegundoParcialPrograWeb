@@ -1,5 +1,5 @@
 const questions = require("../data/questions");
-
+const passedRegister = require("./verifications.controller");
 
 const startQuiz = (req, res) => {
     const publicQuestions = preguntas()
@@ -36,47 +36,54 @@ const shuffle = (array) => {
 }
 
 const submitAnswers = (req, res) => {
-    //Agarramos las respuestas del vato
-    const userAnswers = Array.isArray(req.body.answers) ? req.body.answers : [];
+    try {
+        //Agarramos las respuestas del vato
+        const userAnswers = Array.isArray(req.body.answers) ? req.body.answers : [];
 
-    // Inicializamos variables
-    let score = 0;
-    const details = [];
+        // Inicializamos variables
+        let score = 0;
+        const details = [];
 
-    for (const userAnswer of userAnswers) {
-        //Sacamos la pregunta en base a la id de la pool
-        const preguntaQuizz = questions.find(q => q.id === userAnswer.id);
-        
-        // Lo mandamos a volar si puso de que id=25
-        if (!preguntaQuizz) continue;
+        for (const userAnswer of userAnswers) {
+            //Sacamos la pregunta en base a la id de la pool
+            const preguntaQuizz = questions.find(q => q.id === userAnswer.id);
+            
+            // Lo mandamos a volar si puso de que id=25
+            if (!preguntaQuizz) continue;
 
-        //Comprobamos
-        const isCorrect = userAnswer.answer === preguntaQuizz.correct;
+            //Comprobamos
+            const isCorrect = userAnswer.answer === preguntaQuizz.correct;
 
-        // Si si lo hizo bien le aumentamos el score
-        if (isCorrect) score++;
+            // Si si lo hizo bien le aumentamos el score
+            if (isCorrect) score++;
 
-        //Agregamos las cosas al JSON
-        details.push({
-            id: preguntaQuizz.id,
-            text: preguntaQuizz.text,
-            yourAnswer: userAnswer.answer,
-            correctAnswer: preguntaQuizz.correct,
-            correct: isCorrect
+            //Agregamos las cosas al JSON
+            details.push({
+                id: preguntaQuizz.id,
+                text: preguntaQuizz.text,
+                yourAnswer: userAnswer.answer,
+                correctAnswer: preguntaQuizz.correct,
+                correct: isCorrect
+            });
+        }
+
+        //Imprimimos toda la evaluacion
+        console.log(details);
+        const approved = score>=7 ? true : false;
+        if (approved) passedRegister(req.userId);
+
+        // Enviamos todo
+        return res.status(200).json({
+            message: "Respuestas evaluadas.",
+            score: score,
+            total: 8,
+            details: details,
+            approved
         });
+    } catch (error) {
+        console.error('Error fatal al calificar o registrar el examen:', error);
+        return res.status(500).json({ error: 'Error interno del servidor al procesar las respuestas' });
     }
-
-    //Imprimimos toda la evaluacion
-    console.log(details);
-
-    // Enviamos todo
-    return res.status(200).json({
-        message: "Respuestas evaluadas.",
-        score: score,
-        total: 8,
-        details: details,
-        approved: score>=7 ? true : false
-    });
 }
 
 module.exports = { startQuiz, submitAnswers}
