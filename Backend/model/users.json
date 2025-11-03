@@ -1,8 +1,44 @@
 [
-  { "cuenta": "Jose@correo.com",     "nombre": "Jose Luis",        "examen": false, "comprado": false, "contrasena": "Jose123" },
-  { "cuenta": "Harim@correo.com",    "nombre": "Harim Jesus",      "examen": false, "comprado": false, "contrasena": "Harim123" },
-  { "cuenta": "Julian@correo.com",   "nombre": "Julian Emmanuel",  "examen": false, "comprado": false, "contrasena": "Julian123" },
-  { "cuenta": "Santos@correo.com",   "nombre": "Emiliano Santos",  "examen": false, "comprado": false, "contrasena": "Santos123" },
-  { "cuenta": "Georgina@correo.com", "nombre": "Mtra. Georgina",   "examen": false, "comprado": false, "contrasena": "dieLehrerin" },
-  { "cuenta": "Guido@correo.com",    "nombre": "SuperGuido",       "examen": false, "comprado": false, "contrasena": "PasenLista" }
+  {
+    "cuenta": "Jose@correo.com",
+    "nombre": "Jose Luis",
+    "examen": false,
+    "comprado": false,
+    "contrasena": "Jose123"
+  },
+  {
+    "cuenta": "Harim@correo.com",
+    "nombre": "Harim Jesus",
+    "examen": false,
+    "comprado": false,
+    "contrasena": "Harim123"
+  },
+  {
+    "cuenta": "Julian@correo.com",
+    "nombre": "Julian Emmanuel",
+    "examen": false,
+    "comprado": false,
+    "contrasena": "Julian123"
+  },
+  {
+    "cuenta": "Santos@correo.com",
+    "nombre": "Emiliano Santos",
+    "examen": false,
+    "comprado": false,
+    "contrasena": "Santos123"
+  },
+  {
+    "cuenta": "Georgina@correo.com",
+    "nombre": "Mtra. Georgina",
+    "examen": false,
+    "comprado": false,
+    "contrasena": "dieLehrerin"
+  },
+  {
+    "cuenta": "Guido@correo.com",
+    "nombre": "SuperGuido",
+    "examen": false,
+    "comprado": false,
+    "contrasena": "PasenLista"
+  }
 ]
