@@ -38,4 +38,7 @@ router.post("/compra", verifyToken, checkBuy);
 //Ruta de verificacion de examen realizado
 router.post("/pasado", verifyToken, checkExam);
 
+//Ruta de validacion de pago
+router.post("/pago", verifyToken, payExam);
+
 module.exports = router;
