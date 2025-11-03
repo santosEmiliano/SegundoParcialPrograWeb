@@ -16,7 +16,7 @@ const checkBuy = (req, res) => {
 
         bandera=userBuscado.comprado;
 
-        if(!userBuscado.comprado) return res.status(402).json({
+        if(!userBuscado.comprado) return res.status(200).json({
             message: "Pago no realizado, favor de pagar antes de intentar el examen",
             comprado: bandera
         })
