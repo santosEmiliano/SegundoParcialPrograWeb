@@ -10,53 +10,54 @@ body {
   color: #fff;
 }
 
-/*ocultar scroll*/
+/* ocultar scroll */
 body::-webkit-scrollbar {
   display: none;
 }
 
 .logo-img {
-  height: 6rem;
+  height: 8vh;
   width: 100%;
 }
 
-/*Header */
+/* Header */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #06031f;
+  background: rgb(8, 4, 24);
   color: #fff;
-  padding: 0.5rem 1.5rem;
+  padding: 1vh 3vh;
+  font-size: 2vh;
 }
 
-/*titulo*/
+/* título */
 .nav-logo {
   color: #fff;
-  font-size: 1.8rem;
+  font-size: 2.2vh;
   font-weight: bold;
   text-decoration: none;
 }
 
-/*header */
+/* header */
 .nav-right {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 1vh;
 }
 
 .navbar button {
   background-color: white;
-  padding: 6px;
-  border-radius: 15px;
+  padding: 1vh 3vh;
+  border-radius: 3vh;
   font-weight: bold;
-  height: 45px;
+  height: 5vh;
 }
 
 .navbar button:hover {
   color: rgb(0, 0, 0);
   background-color: rgb(255, 255, 255);
-  box-shadow: 0 0 15px 5px rgba(183, 0, 255, 0.8);
+  box-shadow: 0 0 2vh 1vh rgba(183, 0, 255, 0.8);
   border-color: rgba(183, 0, 255, 0.8);
   cursor: pointer;
 }
@@ -64,30 +65,42 @@ body::-webkit-scrollbar {
 .nav-link {
   color: white;
   text-decoration: none;
-  padding: 1rem 2em;
-  border-radius: 25px;
+  padding: 1.5vh 3vh;
+  border-radius: 4vh;
   transition: box-shadow 0.3s ease, color 0.3s ease;
-  border: 2px solid transparent;
+  border: 0.3vh solid transparent;
 }
 
 .nav-link:hover {
   color: aqua;
-  box-shadow: 0 0 15px 5px rgba(0, 255, 255, 0.8);
+  box-shadow: 0 0 2vh 1vh rgba(0, 255, 255, 0.8);
   border-color: aqua;
 }
 
 .section-3 h1 {
   text-align: center;
+  font-size: 3vh;
 }
 
-/*Footer*/
+/* Footer */
 footer {
   text-align: center;
-  padding: 1rem 0;
-  background: #06031f;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 2vh 0;
+  background: rgb(8, 4, 24);
+  border-top: 0.2vh solid rgba(255, 255, 255, 0.1);
   color: #fff;
   margin-top: auto;
+  font-size: 2vh;
+  text-decoration: none;
+}
+
+footer a {
+  text-decoration: none;
+}
+
+.nav-footer .icon-instagram {
+  font-size: 4vh;
+  text-decoration: none;
 }
 
 .electrolize-regular {
