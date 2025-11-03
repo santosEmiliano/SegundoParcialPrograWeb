@@ -1,9 +1,8 @@
 import servicios from "./servicios.js";
 
 document.addEventListener("DOMContentLoaded", () => {
-  
   const btnPagar = document.getElementById("btnPagar");
-  
+
   if (btnPagar) {
     btnPagar.onclick = (e) => {
       e.preventDefault();
@@ -11,11 +10,11 @@ document.addEventListener("DOMContentLoaded", () => {
     };
   }
 
-  const botonesAgotado = document.querySelectorAll(".btnAgotado");
+  const botonesAgotado = document.querySelectorAll(".btnError");
 
   const alertaAgotado = () => {
     Swal.fire({
-      title: "Error en la compra: Cupo agotado!",
+      title: "Surgió un error: El curso ya no está disponible!",
       icon: "error",
       confirmButtonText: "Ok",
     });
@@ -25,4 +24,23 @@ document.addEventListener("DOMContentLoaded", () => {
     b.addEventListener("click", alertaAgotado);
   });
 
+  document.getElementById("btnIniciarExamen").onclick = async () => {
+    if (servicios.verificarUsuario()) {
+      if (await servicios.verificarExamenComprado()) {
+        window.location.href = "examen.html";
+      } else {
+        Swal.fire({
+          title: "Debes comprar la certificación primero!",
+          icon: "error",
+          confirmButtonText: "Ok",
+        });
+      }
+    } else {
+      Swal.fire({
+        title: "Debes iniciar sesión y comprar el examen primero!",
+        icon: "error",
+        confirmButtonText: "Ok",
+      });
+    }
+  };
 });

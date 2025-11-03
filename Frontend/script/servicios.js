@@ -240,6 +240,8 @@ const servicios = {
   start,
   submit,
   actualizarSesion,
+  verificarExamenComprado,
+  verificarUsuario
 };
 
 export default servicios;
