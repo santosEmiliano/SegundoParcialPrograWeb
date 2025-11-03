@@ -79,7 +79,7 @@ const comprar = async () => {
 const start = async () => {
   try {
     const respuesta = await fetch("http://localhost:3000/api/start", {
-      method: "POST",
+      method: "GET",
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
@@ -98,9 +98,9 @@ const start = async () => {
 const submit = async (respuestasUsuario) => {
   const res = await fetch("http://localhost:3000/api/submit", {
     method: "POST",
-    headers: { 
+    headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${localStorage.getItem("token")}`
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
     body: JSON.stringify({ answers: respuestasUsuario }),
   });
