@@ -6,6 +6,10 @@
     <title>Sobre Nosotros</title>
     <link rel="stylesheet" href="styles/styleBase.css" />
     <link rel="stylesheet" href="styles/styleNosotros.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
   </head>
   <body class="electrolize-regular">
     <nav class="navbar">
@@ -39,35 +43,42 @@
     </nav>
 
     <main>
-      <section class="titulo">
-        <h1>Sobre Nosotros</h1>
+      <section class="section-1">
+        <div class="mision-contenedor">
+          <h1 class="titulo">Nuestra misión y equipo</h1>
+        </div>
       </section>
-      <section>
+      <section class="section-2">
         <div class="container-grid">
           <div class="container-left">
-            <h3>¿Quienes somos?</h3>
-            <p>
-              En CSCourses, somos más que una simple plataforma de cursos; somos
-              un colectivo de tecnólogos y educadores apasionados por la
-              computación en todas sus formas. Creemos que la verdadera maestría
-              no se encuentra solo en las tecnologías, sino en las ganas que
-              tiene el alumno de aprender.
-            </p>
-            <p>
-              Nuestra misión lograr que nuestros estudiantes puedan dominar
-              formas muy distintas de programar. Por eso, nuestro catálogo se
-              extiende desde la creación de interfaces de usuario en frontend
-              con React y la construcción de aplicaciones robustas con
-              TypeScript, hasta entender el bajo mundo de las computadoras a
-              casi nivel del hardware con Lenguaje Ensamblador e incluso la
-              exploraciónde sistemas únicos como Holy C.
-            </p>
-            <p>
-              No solo te preparamos para el mercado laboral de hoy; te damos las
-              herramientas para entender, innovar y construir el software del
-              mañana. Si eres una mente curiosa que no se conforma con el "cómo"
-              y necesita saber el "porqué", has llegado al lugar correcto.
-            </p>
+            <h3 class="subtitulo">
+              Conoce a las personas que impulsan CSCourses.
+            </h3>
+            <div class="pharagraph">
+              <p>
+                En CSCourses, somos más que una simple plataforma de cursos;
+                somos un colectivo de tecnólogos y educadores apasionados por la
+                computación en todas sus formas. Creemos que la verdadera
+                maestría no se encuentra solo en las tecnologías, sino en las
+                ganas que tiene el alumno de aprender.
+              </p>
+              <p>
+                Nuestra misión lograr que nuestros estudiantes puedan dominar
+                formas muy distintas de programar. Por eso, nuestro catálogo se
+                extiende desde la creación de interfaces de usuario en frontend
+                con React y la construcción de aplicaciones robustas con
+                TypeScript, hasta entender el bajo mundo de las computadoras a
+                casi nivel del hardware con Lenguaje Ensamblador e incluso la
+                exploraciónde sistemas únicos como Holy C.
+              </p>
+              <p>
+                No solo te preparamos para el mercado laboral de hoy; te damos
+                las herramientas para entender, innovar y construir el software
+                del mañana. Si eres una mente curiosa que no se conforma con el
+                "cómo" y necesita saber el "porqué", has llegado al lugar
+                correcto.
+              </p>
+            </div>
           </div>
           <div class="container-right">
             <div class="card-rgb">
@@ -76,7 +87,45 @@
           </div>
         </div>
       </section>
-      <section>
+      <section class="section-3">
+        <h3 class="subtitulo-valor">Nuestros valores fundamentales</h3>
+        <div class="valores-container">
+          <div class="valor">
+            <div class="icon-container">
+              <img class="icon" src="media/examen.png" alt="icon-valor" />
+            </div>
+            <h3 class="valor-titulo">Rigor Técnico</h3>
+            <p class="valor-texto">
+              Nuestros exámenes son desafiantes por diseño. No certificamos la
+              memorización, sino la competencia real y la capacidad de resolver
+              problemas.
+            </p>
+          </div>
+          <div class="valor">
+            <div class="icon-container">
+              <img class="icon" src="media/cerebro.png" alt="icon-valor" />
+            </div>
+            <h3 class="valor-titulo">Pasión por el conocimiento</h3>
+            <p class="valor-texto">
+              Creemos que la informática es una disciplina profunda. Celebramos
+              tanto las tecnologías de vanguardia como la historia que nos trajo
+              aquí.
+            </p>
+          </div>
+          <div class="valor">
+            <div class="icon-container">
+              <img class="icon" src="media/balanza.png" alt="icon-valor" />
+            </div>
+            <h3 class="valor-titulo">Integridad y Transparencia</h3>
+            <p class="valor-texto">
+              Nuestros estándares son claros. Creemos en una evaluación justa y
+              en ser transparentes sobre lo que mide (y lo que no mide) cada
+              certificación.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section class="section-4">
         <h1 class="titulo">Nuestros Instructores</h1>
         <div class="container-trabajadores">
           <div class="container-trabajadores-impar">
@@ -154,7 +203,16 @@
 
     <footer>
       <navbar class="nav-footer">
-        <h5>aaaa</h5>
+        <h2>Siguenos en nuestro Instagram</h2>
+        <a href="https://www.instagram.com/cscourses" target="_blank">
+          <div class="icon-instagram">
+            <i class="fa-brands fa-instagram"></i>
+          </div>
+        </a>
+        <h5>
+          <i class="fa-regular fa-copyright"></i>
+          Todos los derechos reservados CSCourses.
+        </h5>
       </navbar>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

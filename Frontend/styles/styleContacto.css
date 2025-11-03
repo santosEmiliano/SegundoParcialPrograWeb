@@ -14,40 +14,41 @@ main {
   justify-content: center;
 }
 
+/*títulos*/
 h1 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
+  font-size: 4vh;
+  margin-bottom: 2vh;
   text-align: center;
-  margin-top: 5rem;
+  margin-top: 8vh;
 }
 
 h6 {
-  font-size: 1rem;
+  font-size: 2vh;
   font-weight: bold;
   color: #aaa;
   text-align: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 3vh;
 }
 
-/*contenedor formulario */
+/*contenedor formulario*/
 .formulario-container {
   width: 80%;
-  min-width: 50rem;
-  background: rgb(255, 255, 255, 0.05);
-  border: 1px solid rgb(255, 255, 255, 0.1);
-  border-radius: 1rem;
-  padding: 3rem;
+  min-width: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 0.2vh solid rgba(255, 255, 255, 0.1);
+  border-radius: 2vh;
+  padding: 6vh;
   display: flex;
   justify-content: center;
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
-  margin: 5rem;
+  box-shadow: 0 0 4vh rgba(0, 255, 255, 0.2);
+  margin: 8vh 0;
   transition: 0.4s ease-in;
 }
 
 .formulario-container:hover {
   border-color: #49c0ec;
-  box-shadow: 0 0 0.4375rem #49c0ec, 0 0 0.75rem #49c0ec, 0 0 1.375rem #41c7d4,
-    0 0 2.3125rem #8c79b4;
+  box-shadow: 0 0 1vh #49c0ec, 0 0 1.5vh #49c0ec, 0 0 2vh #41c7d4,
+    0 0 3vh #8c79b4;
   animation: cardGlow 1.5s infinite alternate;
 }
 
@@ -56,44 +57,47 @@ form {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: auto auto auto;
-  gap: 2rem;
+  gap: 3vh;
   width: 100%;
 }
 
 /*cascarón div*/
 .div1 {
   grid-area: 1 / 1 / 2 / 2;
-  margin-right: 2rem;
-}
-.div2 {
-  grid-area: 1 / 2 / 2 / 4;
-  margin-right: 2rem;
-}
-.div3 {
-  grid-area: 2 / 1 / 3 / 4;
-  margin-right: 2rem;
-}
-.div4 {
-  grid-area: 3 / 1 / 4 / 2;
-  margin-right: 2rem;
+  margin-right: 2vh;
 }
 
-/*titulos*/
+.div2 {
+  grid-area: 1 / 2 / 2 / 4;
+  margin-right: 2vh;
+}
+
+.div3 {
+  grid-area: 2 / 1 / 3 / 4;
+  margin-right: 2vh;
+}
+
+.div4 {
+  grid-area: 3 / 1 / 4 / 2;
+  margin-right: 2vh;
+}
+
+/*títulos*/
 label {
   display: block;
-  margin-bottom: 0.5rem;
-  font-size: 0.95rem;
+  margin-bottom: 1vh;
+  font-size: 2vh;
 }
 
 .textFrom {
   width: 100%;
-  padding: 0.7rem 1rem;
-  border-radius: 0.5rem;
+  padding: 1.5vh 2vh;
+  border-radius: 1vh;
   border: none;
   outline: none;
   background: rgba(255, 255, 255, 0.1);
   color: #fff;
-  font-size: 1rem;
+  font-size: 2vh;
   resize: none;
 }
 
@@ -101,16 +105,17 @@ label {
   color: rgba(255, 255, 255, 0.5);
 }
 
-/* botón enviar */
+/*botón enviar*/
 .div4 input[type="submit"] {
   background: #00ffff;
   border: none;
   color: #000;
   font-weight: bold;
-  padding: 0.9rem 1.5rem;
-  border-radius: 0.6rem;
+  padding: 2vh 3vh;
+  border-radius: 1.2vh;
   cursor: pointer;
   transition: 0.3s ease;
+  font-size: 2vh;
 }
 
 .div4 input[type="submit"]:hover {
