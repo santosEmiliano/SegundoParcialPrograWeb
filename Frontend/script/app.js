@@ -17,21 +17,23 @@ window.guardarRespuesta = (preguntaId, valorSeleccionado) => {
 document.addEventListener("DOMContentLoaded", function () {
   servicios.actualizarSesion();
 
-  document.getElementById("logInbtn").onclick = () => {
-    servicios.login("Santos", "Santos123");
-  };
-
-  document.getElementById("logOutbtn").onclick = () => {
-    servicios.logout();
-  };
-
-  document.getElementById("btnPreguntas").onclick = async () => {
+  const cargarPreguntas = async () => {
     preguntas = await servicios.start();
 
     if (preguntas) {
       localStorage.setItem("question", 0);
       cargarPregunta();
     }
+  };
+
+  cargarPreguntas();
+
+  document.getElementById("logInbtn").onclick = () => {
+    servicios.login("Santos", "Santos123");
+  };
+
+  document.getElementById("logOutbtn").onclick = () => {
+    servicios.logout();
   };
 
   const cargarPregunta = () => {
@@ -45,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const div = document.createElement("div");
     div.className = "card";
     div.innerHTML = `
-                  <p><strong>${p.id}.</strong> ${p.text}</p>
+                  <p>${p.text}</p>
                   ${p.options
                     .map((opt) => {
                       const isChecked =
@@ -90,18 +92,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const ids = Object.keys(respuestasUsuario);
 
-    const answersParaServidor = ids.map(preguntaIdString => {
-        const preguntaId = parseInt(preguntaIdString, 10);
-        
-        const respuestaSeleccionada = respuestasUsuario[preguntaIdString]; 
-        
-        return { 
-            id: preguntaId, 
-            answer: respuestaSeleccionada 
-        };
+    const answersParaServidor = ids.map((preguntaIdString) => {
+      const preguntaId = parseInt(preguntaIdString, 10);
+
+      const respuestaSeleccionada = respuestasUsuario[preguntaIdString];
+
+      return {
+        id: preguntaId,
+        answer: respuestaSeleccionada,
+      };
     });
 
     console.log(answersParaServidor);
     servicios.submit(answersParaServidor);
-  }
+  };
 });
