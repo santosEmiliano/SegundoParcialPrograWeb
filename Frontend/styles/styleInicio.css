@@ -22,8 +22,10 @@ main section {
   background-position: center;
   background-repeat: no-repeat;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: left;
   justify-content: center;
+  padding-left: 4vw;
   min-width: 100vw;
   min-height: 70vh;
   font-size: 6vh;
@@ -45,7 +47,7 @@ main section {
 /*tarjetas cursos*/
 .grid-cursos {
   display: grid;
-  grid-template-columns: repeat(1, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 6vh;
   width: 70vw;
   margin: auto;
@@ -113,7 +115,8 @@ main section {
   padding: 4vh;
   font-size: 2.3vh;
   text-align: justify;
-  border: 0.2vh solid white;
+  border: 0.6vh solid white;
+  box-shadow: 0 0 1vh rgb(255, 255, 255), 0 0 2vh rgba(190, 190, 190, 0.7);
   border-radius: 2vh;
   transition: 0.4s ease;
 }
@@ -122,7 +125,8 @@ main section {
   display: flex;
   margin: 5vh;
   gap: 3vh;
-  border: 0.2vh solid white;
+  border: 0.6vh solid white;
+  box-shadow: 0 0 1vh rgb(255, 255, 255), 0 0 2vh rgba(190, 190, 190, 0.7);
   border-radius: 2vh;
   transition: 0.4s ease;
   padding: 3vh;
@@ -178,8 +182,8 @@ main section {
 .ventajas-container:hover,
 .comentarios-container:hover {
   transform: scale(1.03);
-  border-color: rgb(255, 255, 255);
-  box-shadow: 0 0 1vh rgb(255, 255, 255), 0 0 2vh rgba(190, 190, 190, 0.7);
+  border-color: rgb(0, 255, 255);
+  box-shadow: 0 0 3vh rgb(0, 255, 255);
 }
 
 .comentario p {
@@ -204,9 +208,11 @@ main section {
 
 @keyframes zoomCard {
   0% {
-    transform: scale(0.6);
+    opacity: 0;
+    transform: scale(0.8);
   }
   100% {
+    opacity: 100;
     transform: scale(1);
   }
 }
@@ -229,4 +235,164 @@ main section {
     opacity: 1;
     transform: scale(1);
   }
+}
+
+/* --- AJUSTES EN EL CONTENEDOR GRID --- */
+.grid-cursos {
+  display: grid;
+  /* Mantenemos 1 columna por defecto (móvil primero) */
+  grid-template-columns: repeat(1, 1fr);
+  gap: 4vh; /* Reducido un poco el gap */
+  width: 90vw; /* Aumentamos el ancho para que respire */
+  margin: auto;
+}
+
+/* --- AJUSTE CRÍTICO EN LA TARJETA --- */
+.grid-cursos div {
+  background: #02000c;
+  display: grid;
+  place-items: center;
+  border-radius: 2vh;
+  /* ELIMINADO: font-size: 5vh; 
+    Este era el mayor problema. Hacía todo el texto gigante.
+    Definiremos los tamaños en los elementos hijos.
+  */
+  transition: transform 0.4s ease;
+
+  /* Animaciones (se quedan igual) */
+  view-timeline-name: --reveal;
+  animation-timeline: --reveal;
+  animation-name: zoomCard;
+  animation-fill-mode: both;
+  animation-range: entry 0% cover 100%;
+}
+
+/* --- AJUSTES EN LA IMAGEN --- */
+.grid-cursos img {
+  padding: 2vh; /* Reducido desde 6vh */
+  height: 25vh; /* Reducido desde 40vh */
+  width: 25vh;  /* Reducido desde 40vh */
+  object-fit: contain; /* Asegura que la imagen no se deforme */
+}
+
+/* --- AJUSTES EN EL TÍTULO DE LA TARJETA --- */
+.grid-cursos .card-titulo {
+  padding: 2vh 4vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3vh; /* Tamaño de fuente específico para el título */
+  text-align: center; /* Asegura centrado si el texto es largo */
+}
+
+/* --- AJUSTES EN EL BLOQUE DE TEXTO --- */
+.grid-cursos .texto {
+  padding: 3vh; /* Reducido drásticamente desde 8vh */
+  background-color: #040216;
+  border: 0.6vh solid rgba(0, 255, 255, 0.7);
+  box-shadow: 0 0 3vh rgba(0, 255, 255, 0.7);
+  border-radius: 2vh;
+  text-align: justify;
+  transition: 0.4s ease;
+  width: 90%; /* Controlamos el ancho del texto */
+}
+
+/* --- NUEVA REGLA para el PÁRRAFO --- */
+/* Necesitamos darle un tamaño de fuente sensato al párrafo */
+.grid-cursos .texto p {
+  font-size: 1.8vh; /* Un tamaño legible pero no gigante */
+  line-height: 1.6; /* Mejora legibilidad */
+}
+
+/* --- AJUSTES EN EL BOTÓN --- */
+.grid-cursos button {
+  /* height: 8vh; */ /* Es mejor quitar la altura fija */
+  padding: 1.5vh 2.5vh; /* Usamos padding en lugar de altura */
+  width: 100%;
+  background-color: #040216;
+  color: white;
+  font-size: 1.8vh; /* Reducido desde 3vh */
+  border-radius: 1vh;
+  border: 0.3vh solid white;
+  cursor: pointer;
+  transition: 0.3s ease-in;
+  margin-top: 2.5vh; /* Añadido para separar del texto */
+}
+
+.grid-cursos button:hover {
+  transform: scale(1.05);
+  background-color: #000000;
+  color: rgb(189, 189, 189);
+  border-color: rgb(204, 203, 203);
+}
+
+/* ======================================================
+   LA MAGIA: MEDIA QUERY PARA LAS 2 COLUMNAS
+  ======================================================
+*/
+
+/* Cuando la pantalla tenga al menos 900px de ancho...
+  (puedes ajustar este valor) 
+*/
+@media (min-width: 900px) {
+  .grid-cursos {
+    /* ...cambiamos el grid a 2 columnas */
+    grid-template-columns: repeat(2, 1fr);
+    width: 85vw; /* Podemos re-ajustar el ancho si queremos */
+    gap: 5vh;
+  }
+
+  /* Opcional: podemos hacer la fuente un poco más grande 
+    en pantallas grandes si quisiéramos.
+  */
+  .grid-cursos .texto p {
+    font-size: 2vh; /* Ligeramente más grande en desktop */
+  }
+
+  .grid-cursos button {
+    font-size: 2vh;
+  }
+}
+
+.grid-cursos div {
+  background: #02000c;
+  display: grid;
+  place-items: center;
+  border-radius: 2vh;
+  transition: transform 0.4s ease;
+
+  /*para animación*/
+  view-timeline-name: --reveal;
+  animation-timeline: --reveal;
+  animation-name: zoomCard;
+  animation-fill-mode: both;
+  /* LÍNEA MODIFICADA */
+  animation-range: entry 0% cover 40%;
+}
+
+.texto-grande{
+  padding-bottom: 0;
+  margin-bottom: 4vh;
+  view-timeline-name: --reveal;
+  animation-timeline: --reveal;
+  animation-name: zoomCard;
+  animation-fill-mode: both;
+  animation-range: entry 0% cover 100%;
+}
+
+.texto-chico{
+  margin-top: 0;
+  padding-top: 0;
+  color: rgb(247, 247, 94);
+  view-timeline-name: --reveal;
+  animation-timeline: --reveal;
+  animation-name: zoomCard;
+  animation-fill-mode: both;
+  animation-range: entry 0% cover 100%;
+}
+
+.divisor{
+  margin: 2vw 5vw 0 5vw;
+  color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 1);
 }

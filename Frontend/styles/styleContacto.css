@@ -5,6 +5,9 @@ body {
   padding: 0;
   display: flex;
   flex-direction: column;
+  animation-name: zoomCard;
+  animation-duration: 1s;
+  animation-direction: normal;
 }
 
 main {

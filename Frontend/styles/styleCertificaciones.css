@@ -33,6 +33,11 @@ body {
   padding: 4vh;
   box-shadow: 0 0 3vh rgba(0, 255, 255, 0.2);
   transition: all 0.4s ease;
+  view-timeline-name: --reveal;
+  animation-timeline: --reveal;
+  animation-name: opacityAnimation;
+  animation-fill-mode: both;
+  animation-range: entry 0% cover 100%;
 }
 
 .card-certificacion:hover {
@@ -136,6 +141,7 @@ body {
 }
 
 .pagar {
+  text-align: center;
   color: #a3cc54;
   border-color: #a3cc54;
   box-shadow: 0 0 3vh rgba(57, 243, 0, 0.2);
@@ -146,4 +152,13 @@ body {
   background-color: #000;
   color: #78ac18;
   border-color: #78ac18;
+}
+
+@keyframes opacityAnimation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 100;
+  }
 }
