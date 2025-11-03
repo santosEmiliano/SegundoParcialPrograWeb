@@ -11,7 +11,6 @@ let respuestasUsuario = {};
 
 window.guardarRespuesta = (preguntaId, valorSeleccionado) => {
   respuestasUsuario[preguntaId] = valorSeleccionado;
-  console.log("Respuestas Actuales:", respuestasUsuario);
 };
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -87,23 +86,32 @@ document.addEventListener("DOMContentLoaded", function () {
     cargarPregunta();
   };
 
-  document.getElementById("evniarRespuestas").onclick = (e) => {
+  document.getElementById("enviarRespuestas").onclick = (e) => {
     e.preventDefault();
 
-    const ids = Object.keys(respuestasUsuario);
-
-    const answersParaServidor = ids.map((preguntaIdString) => {
-      const preguntaId = parseInt(preguntaIdString, 10);
-
-      const respuestaSeleccionada = respuestasUsuario[preguntaIdString];
-
-      return {
-        id: preguntaId,
-        answer: respuestaSeleccionada,
-      };
-    });
-
-    console.log(answersParaServidor);
-    servicios.submit(answersParaServidor);
+    servicios.submit(convertirPreguntas());
   };
 });
+
+function convertirPreguntas(){
+  const ids = Object.keys(respuestasUsuario);
+
+  const answersParaServidor = ids.map((preguntaIdString) => {
+    const preguntaId = parseInt(preguntaIdString, 10);
+
+    const respuestaSeleccionada = respuestasUsuario[preguntaIdString];
+
+    return {
+      id: preguntaId,
+      answer: respuestaSeleccionada,
+    };
+  });
+
+  return answersParaServidor;
+}
+
+const funciones = {
+  convertirPreguntas
+}
+
+export default funciones;

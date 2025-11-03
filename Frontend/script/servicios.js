@@ -1,3 +1,5 @@
+import conversion from "./app.js"
+
 const login = async (usuario, contrasena) => {
   try {
     const respuesta = await fetch("http://localhost:3000/api/login", {
@@ -123,7 +125,9 @@ function iniciarTimer(duracion){
       // Llamamos a la función de envoi 
       console.log("El tiempo terminó. Enviando respuestas...");
 
-      //submit();
+      const respuestasAEnviar = conversion.convertirPreguntas(); 
+      console.log(respuestasAEnviar);
+      submit(respuestasAEnviar);
     } else {
       // Si aún queda tiempo, restamos 1 segundo para el próximo ciclo
       duracion--;
