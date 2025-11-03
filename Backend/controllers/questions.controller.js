@@ -4,9 +4,14 @@ const passedRegister = require("./verifications.controller");
 const startQuiz = (req, res) => {
     const publicQuestions = preguntas()
     console.log(publicQuestions);
+    // El examen dura 45 minutos.
+    const duracionEnMinutos = 50;
+    const duracionEnSegundos = 10; // 50 * 60 = 3,000 segundos
+
     res.status(200).json({
         message: "Preguntas listas. ¡Éxito!",
-        questions: publicQuestions
+        questions: publicQuestions,
+        duration: duracionEnSegundos 
     });
 };
 

@@ -88,12 +88,48 @@ const start = async () => {
     if (!respuesta.ok) throw new Error("Error en la respuesta");
     const datos = await respuesta.json();
 
+    console.log(datos.duration);
+    iniciarTimer(datos.duration);
     return datos.questions;
   } catch (error) {
     console.error("Error al llamar a la API:", error);
     alert("Error al llamar al servidor: " + error.message);
   }
 };
+
+function iniciarTimer(duracion){
+  const timerHTML = document.getElementById('tiempo');
+
+  // Guardamos la referencia del intervalo
+  let timerInterval = setInterval(() => {
+    
+    // Calculamos minutos y segundos
+    const minutos = Math.floor(duracion / 60);
+    const segundos = duracion % 60;
+
+    // 5:01 en vez de 5:9
+    const minutosChidos = String(minutos).padStart(2, '0');
+    const segundosChidos = String(segundos).padStart(2, '0');
+
+    // Actualizamos el HTML
+    timerHTML.innerText = `Tiempo restante: ${minutosChidos}:${segundosChidos}`;
+    
+    if (duracion <= 0) {
+
+      // Detenemos el timer para que no siga corriendo
+      clearInterval(timerInterval); 
+      timerHTML.innerText = "Tiempo terminado";
+      
+      // Llamamos a la función de envoi 
+      console.log("El tiempo terminó. Enviando respuestas...");
+
+      //submit();
+    } else {
+      // Si aún queda tiempo, restamos 1 segundo para el próximo ciclo
+      duracion--;
+    }
+  }, 1000); // 1000ms 
+}
 
 const submit = async (respuestasUsuario) => {
   const res = await fetch("http://localhost:3000/api/submit", {
