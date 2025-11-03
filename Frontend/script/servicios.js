@@ -1,4 +1,4 @@
-import conversion from "./app.js"
+import conversion from "./examen.js"
 
 const login = async (usuario, contrasena) => {
   try {
