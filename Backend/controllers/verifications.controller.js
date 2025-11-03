@@ -83,7 +83,7 @@ const passedRegister = (userId) => {
         console.error('Error en la actualizacion de estado de usuario:', error);
     }
 }
-
+ 
 const payExam = (req, res) => {
     let usuarios = [];
     let bandera;

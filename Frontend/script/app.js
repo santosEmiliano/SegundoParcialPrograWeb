@@ -11,11 +11,21 @@ let respuestasUsuario = {};
 
 window.guardarRespuesta = (preguntaId, valorSeleccionado) => {
   respuestasUsuario[preguntaId] = valorSeleccionado;
-  console.log("Respuestas Actuales:", respuestasUsuario);
 };
 
 document.addEventListener("DOMContentLoaded", function () {
   servicios.actualizarSesion();
+
+  const cargarPreguntas = async () => {
+    preguntas = await servicios.start();
+
+    if (preguntas) {
+      localStorage.setItem("question", 0);
+      cargarPregunta();
+    }
+  };
+
+  cargarPreguntas();
 
   document.getElementById("logInbtn").onclick = () => {
     servicios.login("Santos", "Santos123");
@@ -23,15 +33,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   document.getElementById("logOutbtn").onclick = () => {
     servicios.logout();
-  };
-
-  document.getElementById("btnPreguntas").onclick = async () => {
-    preguntas = await servicios.start();
-
-    if (preguntas) {
-      localStorage.setItem("question", 0);
-      cargarPregunta();
-    }
   };
 
   const cargarPregunta = () => {
@@ -45,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const div = document.createElement("div");
     div.className = "card";
     div.innerHTML = `
-                  <p><strong>${p.id}.</strong> ${p.text}</p>
+                  <p>${p.text}</p>
                   ${p.options
                     .map((opt) => {
                       const isChecked =
@@ -85,23 +86,32 @@ document.addEventListener("DOMContentLoaded", function () {
     cargarPregunta();
   };
 
-  document.getElementById("evniarRespuestas").onclick = (e) => {
+  document.getElementById("enviarRespuestas").onclick = (e) => {
     e.preventDefault();
 
-    const ids = Object.keys(respuestasUsuario);
-
-    const answersParaServidor = ids.map(preguntaIdString => {
-        const preguntaId = parseInt(preguntaIdString, 10);
-        
-        const respuestaSeleccionada = respuestasUsuario[preguntaIdString]; 
-        
-        return { 
-            id: preguntaId, 
-            answer: respuestaSeleccionada 
-        };
-    });
-
-    console.log(answersParaServidor);
-    servicios.submit(answersParaServidor);
-  }
+    servicios.submit(convertirPreguntas());
+  };
 });
+
+function convertirPreguntas(){
+  const ids = Object.keys(respuestasUsuario);
+
+  const answersParaServidor = ids.map((preguntaIdString) => {
+    const preguntaId = parseInt(preguntaIdString, 10);
+
+    const respuestaSeleccionada = respuestasUsuario[preguntaIdString];
+
+    return {
+      id: preguntaId,
+      answer: respuestaSeleccionada,
+    };
+  });
+
+  return answersParaServidor;
+}
+
+const funciones = {
+  convertirPreguntas
+}
+
+export default funciones;
