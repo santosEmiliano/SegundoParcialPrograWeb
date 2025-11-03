@@ -31,11 +31,4 @@ router.get("/lectura", verifyToken, sendPublications)
 
 //          RUTAS DE VERIFICACION
 
-//Ruta de verificacion de compra
-router.post("/compra", verifyToken, checkBuy);
-
-//Ruta de verificacion de examen realizado
-router.post("/pasado", verifyToken, checkExam);
-
-
 module.exports = router;
