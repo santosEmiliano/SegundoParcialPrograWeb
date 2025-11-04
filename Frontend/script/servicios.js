@@ -326,6 +326,47 @@ function actualizarSesionLogOut() {
   document.getElementById("logOutbtn").style.display = "none";
 }
 
+// Funcion para descargar el certificado (PDF)
+const descargarCertificado = async () => {
+  try {
+    const res = await fetch("http://localhost:3000/api/certificate", {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      }
+    });
+
+    if (!res.ok) {
+      // Si el servidor da un error (ej. 403 No aprobado)
+      const errData = await res.json();
+      Swal.fire('Error', errData.error || 'No se pudo generar el certificado.', 'error');
+      return;
+    }
+
+    // Convertir la respuesta en un Blob (datos binarios del PDF)
+    const blob = await res.blob();
+
+    // Crear una URL temporal en el navegador para ese Blob
+    const url = window.URL.createObjectURL(blob);
+
+    // Crear un link <a> invisible para iniciar la descarga
+    const a = document.createElement('a');
+    a.style.display = 'none';
+    a.href = url;
+    a.download = `Certificado-REACT.pdf`; // Nombre del archivo AQUI YO PENSABA PONER EL NOMBRE DEL USUARIO PERO NO LO ENCONTRE XD
+    document.body.appendChild(a);
+    a.click();
+
+    // Limpiar la URL temporal
+    window.URL.revokeObjectURL(url);
+    document.body.removeChild(a);
+
+  } catch (err) {
+    console.error("Error al descargar certificado:", err);
+    Swal.fire('Error de Red', 'No se pudo conectar con el servidor para la descarga.', 'error');
+  }
+};
+
 const servicios = {
   login,
   logout,
@@ -336,7 +377,8 @@ const servicios = {
   verificarExamenComprado,
   verificarUsuario,
   mandarComentario,
-  verificarExamenRealizado
+  verificarExamenRealizado,
+  descargarCertificado
 };
 
 export default servicios;

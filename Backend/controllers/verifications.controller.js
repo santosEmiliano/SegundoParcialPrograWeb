@@ -1,5 +1,5 @@
 const usuarios = require("../model/users.json");
-const examenesRealizados = new Set();
+const examenesRealizados = new Map();
 
 
 const checkBuy = (req, res) => {
@@ -48,7 +48,7 @@ const checkExam = (req, res) => {
 
 const passedRegister = (userId) => {
     try {
-        examenesRealizados.add(userId);
+        examenesRealizados.set(userId, new Date());
 
         console.log(`Usuario ${userId} marcado como 'examen: true' en la memoria.`);
 
@@ -77,4 +77,14 @@ const payExam = (req, res) => {
     });
 }
 
-module.exports = { checkBuy, checkExam, passedRegister, payExam }
+// Funcion para verificar si un usuario paso
+const hasUserPassed = (userId) =>{
+    return examenesRealizados.has(userId);
+}
+
+// Funcion para obtener la fecha
+const getExamDate = (userId) =>{
+    return examenesRealizados.get(userId);
+}
+
+module.exports = { checkBuy, checkExam, passedRegister, payExam, hasUserPassed, getExamDate }

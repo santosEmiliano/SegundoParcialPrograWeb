@@ -63,9 +63,10 @@ const submitAnswers = (req, res) => {
         console.log(details);
         const approved = score>=6 ? true : false;
     
-        passedRegister(req.userId);
         
+
         if (approved) {
+            passedRegister(req.userId);
           // AQUI SE LLAMA A passedRegister en caso de que queramos que solo se registre como hecho el examen si lo aprobó
         }
 

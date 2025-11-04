@@ -2,6 +2,7 @@
   {
     "cuenta": "Jose@correo.com",
     "nombre": "Jose Luis",
+    "nombreCompleto": "José Luis Narváez Martínez",
     "examen": false,
     "comprado": false,
     "contrasena": "Jose123"
@@ -9,6 +10,7 @@
   {
     "cuenta": "Harim@correo.com",
     "nombre": "Harim Jesus",
+    "nombreCompleto": "Harim Jesús Enrique Dueñas Dávila",
     "examen": false,
     "comprado": false,
     "contrasena": "Harim123"
@@ -16,6 +18,7 @@
   {
     "cuenta": "Julian@correo.com",
     "nombre": "Julian Emmanuel",
+    "nombreCompleto": "Julián Emmanuel Hernández",
     "examen": false,
     "comprado": false,
     "contrasena": "Julian123"
@@ -23,6 +26,7 @@
   {
     "cuenta": "Santos@correo.com",
     "nombre": "Emiliano Santos",
+    "nombreCompleto": "Emiliano Alejandro Santos González",
     "examen": false,
     "comprado": false,
     "contrasena": "Santos123"
