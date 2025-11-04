@@ -86,19 +86,25 @@ main section {
   transition: 0.4s ease;
 }
 
-.grid-cursos button {
-  height: 8vh;
+.grid-cursos .btnCursos {
+  padding: 1.5vh 2.5vh;
   width: 100%;
   background-color: #040216;
   color: white;
-  font-size: 3vh;
+  font-size: 1.8vh;
   border-radius: 1vh;
   border: 0.3vh solid white;
   cursor: pointer;
   transition: 0.3s ease-in;
+  margin-top: 2.5vh;
+
+  display: block;
+  text-decoration: none;
+  text-align: center;
+  box-sizing: border-box;
 }
 
-.grid-cursos button:hover {
+.grid-cursos .btnCursos:hover {
   transform: scale(1.05);
   background-color: #000000;
   color: rgb(189, 189, 189);

@@ -212,9 +212,31 @@ const submit = async (respuestasUsuario) => {
 
     const data = await res.json();
 
-    console.log(data);
+    if (data.approved) {
+      await Swal.fire({
+        title: "¡Felicidades! Has Aprobado",
+        text: `Tu calificación fue: ${data.score} de ${data.total}.`,
+        icon: "success",
+        confirmButtonText: "Genial",
+      });
+    } else {
+      await Swal.fire({
+        title: "Has Reprobado 😥",
+        text: `Tu calificación fue: ${data.score} de ${data.total}. Necesitabas 7 para aprobar.`,
+        icon: "error",
+        confirmButtonText: "Entendido",
+      });
+    }
+
+    window.location.href = "certificaciones.html";
+
   } catch (err) {
-    console.error("Error de red al verificar compra:", err);
+    console.error("Error de red al enviar el examen:", err);
+    Swal.fire({
+      title: "Error de Conexión",
+      text: "No se pudieron enviar tus respuestas. Revisa tu conexión.",
+      icon: "error"
+    });
     return;
   }
 };
@@ -225,11 +247,9 @@ const mandarComentario = async (_comentario, _correo) => {
       method: "POST",
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
-        // 1. AÑADE EL HEADER 'CONTENT-TYPE'
-        "Content-Type": "application/json", 
+        "Content-Type": "application/json",
       },
-      // 2. CONVIERTE EL OBJETO A STRING CON JSON.stringify()
-      body: JSON.stringify({ 
+      body: JSON.stringify({
         mensaje: _comentario,
         correo: _correo,
       }),
@@ -238,11 +258,10 @@ const mandarComentario = async (_comentario, _correo) => {
     if (res.ok) {
       Swal.fire({
         title: "Tu comentario fue guardado, gracias por confiar en nosotros!!",
-        icon: "success", // <-- Corregido (era "Success" con mayúscula)
+        icon: "success",
         confirmButtonText: "Ok",
       });
     } else {
-      // Opcional: Manejar errores del servidor que no son 500
       const errorData = await res.json();
       Swal.fire({
         title: "Error al enviar",
@@ -252,8 +271,7 @@ const mandarComentario = async (_comentario, _correo) => {
       });
     }
   } catch (err) {
-    // Corregido: El log ahora es más específico
-    console.error("Error de red al mandar comentario:", err); 
+    console.error("Error de red al mandar comentario:", err);
     return false;
   }
 };
