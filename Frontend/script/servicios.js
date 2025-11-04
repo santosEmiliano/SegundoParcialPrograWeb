@@ -285,6 +285,32 @@ function actualizarSesion() {
   }
 }
 
+const verificarExamenRealizado = async () => {
+  try {
+    const res = await fetch("http://localhost:3000/api/pasado", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
+
+    const data = await res.json();
+
+    if(res.ok){
+      return data.examen;
+    }
+
+  } catch (err) {
+    console.error("Error al verificar si ya se hizo el examen:", err);
+    Swal.fire({
+      title: "Error de Conexión",
+      text: "No se pudieron enviar tus respuestas. Revisa tu conexión.",
+      icon: "error"
+    });
+    return;
+  }
+}
+
 function actualizarSesionLogIn(nombreUsuario) {
   document.getElementById("userName").style.display = "inline-block";
   document.getElementById("userName").innerHTML = `${nombreUsuario}`;
@@ -310,6 +336,7 @@ const servicios = {
   verificarExamenComprado,
   verificarUsuario,
   mandarComentario,
+  verificarExamenRealizado
 };
 
 export default servicios;

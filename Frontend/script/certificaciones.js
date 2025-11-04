@@ -27,7 +27,18 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("btnIniciarExamen").onclick = async () => {
     if (servicios.verificarUsuario()) {
       if (await servicios.verificarExamenComprado()) {
-        window.location.href = "examen.html";
+        
+        if (!(await servicios.verificarExamenRealizado())) {
+          window.location.href = "examen.html";
+        } else {
+          Swal.fire({
+            title: "¡Examen ya realizado!",
+            text: "Ya has completado esta certificación con anterioridad.",
+            icon: "info",
+            confirmButtonText: "Ok",
+          });
+        }
+
       } else {
         Swal.fire({
           title: "Debes comprar la certificación primero!",

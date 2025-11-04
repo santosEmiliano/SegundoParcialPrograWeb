@@ -1,5 +1,5 @@
 const questions = require("../data/questions");
-const passedRegister = require("./verifications.controller");
+const { passedRegister } = require("./verifications.controller"); 
 const usuarios = require("../model/users.json");
 
 const startQuiz = (req, res) => {
@@ -27,12 +27,6 @@ const preguntas = () => {
     return preguntas.slice(0, 8);
 }
 
-/*
-Metodo de la baraja:
-    Esta chido, haces una copia del array
-    Agarras el maximo de tam que tiene
-    Vas intercambiando posiciones, es como un sort pero haciendo lo contrario jajaja
-*/
 const shuffle = (array) => {
     const newArray = [...array];
     let index = newArray.length;
@@ -47,27 +41,16 @@ const shuffle = (array) => {
 
 const submitAnswers = (req, res) => {
     try {
-        //Agarramos las respuestas del vato
         const userAnswers = Array.isArray(req.body.answers) ? req.body.answers : [];
-
-        // Inicializamos variables
         let score = 0;
         const details = [];
 
         for (const userAnswer of userAnswers) {
-            //Sacamos la pregunta en base a la id de la pool
             const preguntaQuizz = questions.find(q => q.id === userAnswer.id);
-            
-            // Lo mandamos a volar si puso de que id=25
             if (!preguntaQuizz) continue;
-
-            //Comprobamos
             const isCorrect = userAnswer.answer === preguntaQuizz.correct;
-
-            // Si si lo hizo bien le aumentamos el score
             if (isCorrect) score++;
 
-            //Agregamos las cosas al JSON
             details.push({
                 id: preguntaQuizz.id,
                 text: preguntaQuizz.text,
@@ -77,12 +60,15 @@ const submitAnswers = (req, res) => {
             });
         }
 
-        //Imprimimos toda la evaluacion
         console.log(details);
-        const approved = score>=7 ? true : false;
-        if (approved) passedRegister(req.userId);
+        const approved = score>=6 ? true : false;
+    
+        passedRegister(req.userId);
+        
+        if (approved) {
+          // AQUI SE LLAMA A passedRegister en caso de que queramos que solo se registre como hecho el examen si lo aprobó
+        }
 
-        // Enviamos todo
         return res.status(200).json({
             message: "Respuestas evaluadas.",
             score: score,

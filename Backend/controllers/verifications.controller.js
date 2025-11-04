@@ -1,4 +1,6 @@
 const usuarios = require("../model/users.json");
+const examenesRealizados = new Set();
+
 
 const checkBuy = (req, res) => {
     let bandera;
@@ -25,16 +27,12 @@ const checkBuy = (req, res) => {
 }
 
 const checkExam = (req, res) => {
-    let bandera;
     try {
-        const userBuscado = usuarios.find(u => u.cuenta === req.userId);
-        if (!userBuscado) return res.status(404).json({ error: "La cuenta del usuario no ha sido encontrado"});
-
-        bandera=userBuscado.examen;
-
-        if(!userBuscado.examen) return res.status(403).json({
+        const yaRealizado = examenesRealizados.has(req.userId);
+        
+        if(!yaRealizado) return res.status(200).json({
             message: "Examen no aprobado, favor de mejorar",
-            examen: bandera
+            examen: false // El usuario NO lo ha realizado
         })
 
     } catch (error) {
@@ -44,18 +42,15 @@ const checkExam = (req, res) => {
 
     return res.status(200).json({
         message: "Examen aprobado, deja de tryhardear ;)",
-        examen: bandera
+        examen: true // El usuario SÍ lo ha realizado
     });
 }
 
 const passedRegister = (userId) => {
     try {
-        const userBuscado = usuarios.find(u => u.cuenta === userId);
-        if (!userBuscado) return;
+        examenesRealizados.add(userId);
 
-        userBuscado.examen = true;
-
-        console.log(`Usuario ${userId} marcado como 'examen: true'.`);
+        console.log(`Usuario ${userId} marcado como 'examen: true' en la memoria.`);
 
     } catch (error) {
         console.error('Error en la actualizacion de estado de usuario:', error);
