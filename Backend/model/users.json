@@ -24,7 +24,7 @@
     "cuenta": "Santos@correo.com",
     "nombre": "Emiliano Santos",
     "examen": false,
-    "comprado": true,
+    "comprado": false,
     "contrasena": "Santos123"
   },
   {

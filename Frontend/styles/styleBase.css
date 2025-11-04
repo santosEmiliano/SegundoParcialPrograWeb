@@ -49,6 +49,12 @@ body::-webkit-scrollbar {
   gap: 1vh;
 }
 
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 1vh; /* Puedes ajustar este espacio como prefieras */
+}
+
 .navbar button {
   background-color: white;
   padding: 1vh 3vh;
@@ -125,4 +131,8 @@ footer a {
     opacity: 100;
     transform: scale(1);
   }
+}
+
+.user-name{
+  color: rgb(247, 247, 94);
 }

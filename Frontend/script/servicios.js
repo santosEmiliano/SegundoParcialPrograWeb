@@ -223,12 +223,17 @@ function actualizarSesion() {
   }
 }
 
-function actualizarSesionLogIn() {
+function actualizarSesionLogIn(nombreUsuario) {
+  document.getElementById("userName").style.display = "inline-block";
+  document.getElementById("userName").innerHTML = `${nombreUsuario}`;
+  document.getElementById("userIcon").style.display = "inline-block";
   document.getElementById("logInbtn").style.display = "none";
   document.getElementById("logOutbtn").style.display = "inline-block";
 }
 
 function actualizarSesionLogOut() {
+  document.getElementById("userName").style.display = "none";
+  document.getElementById("userIcon").style.display = "none";
   document.getElementById("logInbtn").style.display = "inline-block";
   document.getElementById("logOutbtn").style.display = "none";
 }
