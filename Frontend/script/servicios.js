@@ -165,7 +165,7 @@ const start = async () => {
 
     console.log(datos.duration);
     iniciarTimer(datos.duration);
-    return datos.questions;
+    return datos;
   } catch (error) {
     console.error("Error al llamar a la API:", error);
     alert("Error al llamar al servidor: " + error.message);
