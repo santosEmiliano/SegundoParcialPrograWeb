@@ -3,7 +3,7 @@ module.exports = [
         id: 0,
         text: "¿Cuál es la principal responsabilidad de React en una aplicación web?",
         options: ["Construir y generar la interfaz del usuario (UI).", "Definir los estilos y el diseño visual de la página.", "Gestionar las peticiones de red y autenticación.", "Manejar la lógica del servidor y la base de datos."],
-        correct: "Construir y generar la interfaz del usuario (UI)"
+        correct: "Construir y generar la interfaz del usuario (UI)."
     },
     {
         id: 1,

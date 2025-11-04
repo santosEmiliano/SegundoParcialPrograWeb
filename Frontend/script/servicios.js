@@ -17,9 +17,6 @@ const login = async (usuario, contrasena) => {
     try {
       data = await respuesta.json();
 
-      localStorage.setItem("token", data.token);
-      localStorage.setItem("cuenta", usuario);
-
       if (respuesta.ok) {
         servicios.actualizarSesion();
         Swal.fire({
@@ -27,12 +24,15 @@ const login = async (usuario, contrasena) => {
           icon: "success",
           confirmButtonText: "Ok",
         });
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("cuenta", usuario);
       } else {
         Swal.fire({
           title: "Credenciales incorrectas! 👹",
-          icon: "error", 
+          icon: "error",
           confirmButtonText: "Ok",
         });
+        return;
       }
     } catch (parseErr) {
       console.warn("Respuesta no  es JSON del servidor", parseErr);
@@ -82,6 +82,7 @@ const logout = async () => {
     localStorage.removeItem("token");
     localStorage.removeItem("cuenta");
     actualizarSesionLogOut();
+    window.location.href
   }
 };
 
@@ -358,16 +359,20 @@ function actualizarSesionLogOut() {
 const descargarCertificado = async () => {
   try {
     const res = await fetch("http://localhost:3000/api/certificate", {
-      method: 'GET',
+      method: "GET",
       headers: {
-        'Authorization': `Bearer ${localStorage.getItem('token')}`
-      }
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
     });
 
     if (!res.ok) {
-      // Si el servidor da un error 
+      // Si el servidor da un error
       const errData = await res.json();
-      Swal.fire('Error', errData.error || 'No se pudo generar el certificado.', 'error');
+      Swal.fire(
+        "Error",
+        errData.error || "No se pudo generar el certificado.",
+        "error"
+      );
       return;
     }
 
@@ -378,8 +383,8 @@ const descargarCertificado = async () => {
     const url = window.URL.createObjectURL(blob);
 
     // Crear un link <a> invisible para iniciar la descarga
-    const a = document.createElement('a');
-    a.style.display = 'none';
+    const a = document.createElement("a");
+    a.style.display = "none";
     a.href = url;
     a.download = `Certificado-REACT.pdf`; // Nombre del archivo AQUI YO PENSABA PONER EL NOMBRE DEL USUARIO PERO NO LO ENCONTRE XD
     document.body.appendChild(a);
@@ -388,13 +393,15 @@ const descargarCertificado = async () => {
     // Limpiar la URL temporal
     window.URL.revokeObjectURL(url);
     document.body.removeChild(a);
-
   } catch (err) {
     console.error("Error al descargar certificado:", err);
-    Swal.fire('Error de Red', 'No se pudo conectar con el servidor para la descarga.', 'error');
+    Swal.fire(
+      "Error de Red",
+      "No se pudo conectar con el servidor para la descarga.",
+      "error"
+    );
   }
 };
-
 
 const servicios = {
   login,
@@ -407,7 +414,7 @@ const servicios = {
   verificarUsuario,
   mandarComentario,
   verificarExamenRealizado,
-  descargarCertificado
+  descargarCertificado,
 };
 
 export default servicios;

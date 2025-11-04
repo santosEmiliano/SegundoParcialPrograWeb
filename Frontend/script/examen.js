@@ -21,7 +21,7 @@ const cargarPreguntas = async () => {
   const descExamen = document.getElementById("infoDescripcionExamen");
   nameExamen.innerText = info.user;
   fechaExamen.innerText = info.date;
-  descExamen.innerText = "Examen de opción múltiple (8 preguntas) para obtener certificado en REACT con un tiempo límite de 50 minutos. Se requiere una puntuación mínima de 7/8 para aprobar.";
+  descExamen.innerText = "Examen de opción múltiple (8 preguntas) para obtener certificado en REACT con un tiempo límite de 50 minutos. Se requiere una puntuación mínima de 6/8 para aprobar.";
 };
 
 const cargarPregunta = () => {
