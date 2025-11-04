@@ -142,3 +142,36 @@ label:hover {
   justify-content: space-between;
   margin-top: 4vh;
 }
+
+/* Estilos para la nueva sección de información */
+.info-examen {
+  width: 80vw;
+  min-width: 50vw;
+  margin-top: 3vh;
+  padding: 2vh;
+  background: #06031f; /* Mismo fondo que las tarjetas */
+  border: 0.4vh solid rgba(0, 255, 255, 0.3); /* Mismo borde */
+  border-radius: 2vh; /* Mismo borde redondeado */
+  box-shadow: 0 0 3vh rgba(0, 255, 255, 0.15); /* Misma sombra */
+  text-align: center;
+}
+
+/* Estilo para el nombre */
+#infoNombreExamen {
+  color: #49c0ec; /* Color azul cian destacado */
+  font-size: 2.5vh;
+  margin: 0.5vh 0;
+}
+
+/* Estilo para la fecha */
+#infoFechaExamen {
+  font-size: 1.8vh;
+  margin: 0.5vh 0;
+}
+
+/* Estilo para el texto pequeño (descripción) */
+#infoDescripcionExamen {
+  font-size: 1.6vh;
+  color: #bbb; /* Un color un poco más suave */
+  margin: 0.5vh 0;
+}

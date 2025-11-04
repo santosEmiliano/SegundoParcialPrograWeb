@@ -1,5 +1,6 @@
 const questions = require("../data/questions");
 const passedRegister = require("./verifications.controller");
+const usuarios = require("../model/users.json");
 
 const startQuiz = (req, res) => {
     const publicQuestions = preguntas()
@@ -8,10 +9,14 @@ const startQuiz = (req, res) => {
     const duracionEnMinutos = 50;
     const duracionEnSegundos = duracionEnMinutos * 60; // 50 * 60 = 3,000 segundos
 
+    const userBuscado = usuarios.find(u => u.cuenta === req.userId);
+
     res.status(200).json({
         message: "Preguntas listas. ¡Éxito!",
         questions: publicQuestions,
-        duration: duracionEnSegundos 
+        duration: duracionEnSegundos,
+        date: new Date().toLocaleDateString(),
+        user: userBuscado.nombre
     });
 };
 
