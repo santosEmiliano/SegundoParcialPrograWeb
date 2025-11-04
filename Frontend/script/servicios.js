@@ -1,5 +1,4 @@
 import conversion from "./examen.js";
-
 const login = async (usuario, contrasena) => {
   try {
     const respuesta = await fetch("http://localhost:3000/api/login", {
@@ -21,20 +20,31 @@ const login = async (usuario, contrasena) => {
       localStorage.setItem("token", data.token);
       localStorage.setItem("cuenta", usuario);
 
-      servicios.actualizarSesion();
-
-      Swal.fire({
-        title: "Sesión Iniciada Con Éxito!!",
-        icon: "success",
-        confirmButtonText: "Ok",
-      });
+      if (respuesta.ok) {
+        servicios.actualizarSesion();
+        Swal.fire({
+          title: "Sesión Iniciada Con Éxito!!",
+          icon: "success",
+          confirmButtonText: "Ok",
+        });
+      } else {
+        Swal.fire({
+          title: "Credenciales incorrectas! 👹",
+          icon: "error", 
+          confirmButtonText: "Ok",
+        });
+      }
     } catch (parseErr) {
       console.warn("Respuesta no  es JSON del servidor", parseErr);
       data = {};
     }
   } catch (error) {
     console.error("Error al llamar a la API:", error);
-    alert("Error al llamar al servidor: " + error.message);
+    Swal.fire({
+      title: "Error al llamar al servidor°",
+      icon: "error",
+      confirmButtonText: "Ok",
+    });
   }
 };
 
@@ -55,11 +65,19 @@ const logout = async () => {
       });
     } else {
       const data = await res.json();
-      alert(data?.error ?? `Error al cerrar sesión`);
+      Swal.fire({
+        title: data?.error ?? `Error al cerrar sesión`,
+        icon: "error",
+        confirmButtonText: "Ok",
+      });
     }
   } catch (err) {
     console.error("Error al conectar con el servidor:", err);
-    alert("Error de conexión");
+    Swal.fire({
+      title: "Error de conexión",
+      icon: "error",
+      confirmButtonText: "Ok",
+    });
   } finally {
     localStorage.removeItem("token");
     localStorage.removeItem("cuenta");
@@ -168,7 +186,11 @@ const start = async () => {
     return datos;
   } catch (error) {
     console.error("Error al llamar a la API:", error);
-    alert("Error al llamar al servidor: " + error.message);
+    Swal.fire({
+      title: data?.error ?? "Error al llamar al servidor: " + error.message,
+      icon: "error",
+      confirmButtonText: "Ok",
+    });
   }
 };
 
@@ -212,6 +234,15 @@ const submit = async (respuestasUsuario) => {
 
     const data = await res.json();
 
+    if (!res.ok) {
+      await Swal.fire({
+        title: "Error del servidor",
+        text: `${res.error}`,
+        icon: "error",
+        confirmButtonText: "Entendido",
+      });
+    }
+
     if (data.approved) {
       await Swal.fire({
         title: "¡Felicidades! Has Aprobado",
@@ -229,13 +260,12 @@ const submit = async (respuestasUsuario) => {
     }
 
     window.location.href = "certificaciones.html";
-
   } catch (err) {
     console.error("Error de red al enviar el examen:", err);
     Swal.fire({
       title: "Error de Conexión",
       text: "No se pudieron enviar tus respuestas. Revisa tu conexión.",
-      icon: "error"
+      icon: "error",
     });
     return;
   }
@@ -296,20 +326,19 @@ const verificarExamenRealizado = async () => {
 
     const data = await res.json();
 
-    if(res.ok){
+    if (res.ok) {
       return data.examen;
     }
-
   } catch (err) {
     console.error("Error al verificar si ya se hizo el examen:", err);
     Swal.fire({
       title: "Error de Conexión",
       text: "No se pudieron enviar tus respuestas. Revisa tu conexión.",
-      icon: "error"
+      icon: "error",
     });
     return;
   }
-}
+};
 
 function actualizarSesionLogIn(nombreUsuario) {
   document.getElementById("userName").style.display = "inline-block";
@@ -326,6 +355,47 @@ function actualizarSesionLogOut() {
   document.getElementById("logOutbtn").style.display = "none";
 }
 
+const descargarCertificado = async () => {
+  try {
+    const res = await fetch("http://localhost:3000/api/certificate", {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      }
+    });
+
+    if (!res.ok) {
+      // Si el servidor da un error 
+      const errData = await res.json();
+      Swal.fire('Error', errData.error || 'No se pudo generar el certificado.', 'error');
+      return;
+    }
+
+    // Convertir la respuesta en un Blob (datos binarios del PDF)
+    const blob = await res.blob();
+
+    // Crear una URL temporal en el navegador para ese Blob
+    const url = window.URL.createObjectURL(blob);
+
+    // Crear un link <a> invisible para iniciar la descarga
+    const a = document.createElement('a');
+    a.style.display = 'none';
+    a.href = url;
+    a.download = `Certificado-REACT.pdf`; // Nombre del archivo AQUI YO PENSABA PONER EL NOMBRE DEL USUARIO PERO NO LO ENCONTRE XD
+    document.body.appendChild(a);
+    a.click();
+
+    // Limpiar la URL temporal
+    window.URL.revokeObjectURL(url);
+    document.body.removeChild(a);
+
+  } catch (err) {
+    console.error("Error al descargar certificado:", err);
+    Swal.fire('Error de Red', 'No se pudo conectar con el servidor para la descarga.', 'error');
+  }
+};
+
+
 const servicios = {
   login,
   logout,
@@ -336,7 +406,8 @@ const servicios = {
   verificarExamenComprado,
   verificarUsuario,
   mandarComentario,
-  verificarExamenRealizado
+  verificarExamenRealizado,
+  descargarCertificado
 };
 
 export default servicios;

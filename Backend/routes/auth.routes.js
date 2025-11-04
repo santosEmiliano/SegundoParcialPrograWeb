@@ -4,6 +4,7 @@ const { verifyToken } = require("../middleware/auth.middleware");
 const { startQuiz, submitAnswers } = require("../controllers/questions.controller");
 const { saveMessage, sendPublications } = require("../controllers/publications.controller");
 const { checkBuy, checkExam, payExam } = require("../controllers/verifications.controller")
+const {generateCertificate} = require("../controllers/certificate.controller");
 const router = express.Router();
 
 //          RUTAS LOGIN/LOGOUT
@@ -40,5 +41,8 @@ router.post("/pasado", verifyToken, checkExam);
 
 //Ruta de validacion de pago
 router.post("/pago", verifyToken, payExam);
+
+//          RUTA PDF
+router.get("/certificate", verifyToken, generateCertificate);
 
 module.exports = router;

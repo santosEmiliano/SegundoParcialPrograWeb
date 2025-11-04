@@ -69,7 +69,7 @@ module.exports = [
         id: 11,
         text: "¿Qué problema soluciona la API de Context en React?",
         options: ["El manejo de formularios de manera eficiente.", "La necesidad de hacer peticiones HTTP a un servidor.", "Evitar pasar props manualmente a través de muchos niveles de componentes.", "La lentitud del DOM real al actualizarse."],
-        correct: "Esmirna"
+        correct: "Evitar pasar props manualmente a través de muchos niveles de componentes."
     },
     {
         id: 12,
@@ -81,7 +81,7 @@ module.exports = [
         id: 13,
         text: "¿Qué hace la herramienta 'Create React App' (CRA)?",
         options: ["La biblioteca oficial de React para manejar el estado.", "Proporciona una configuración inicial completa para una aplicación React sin necesidad de configurar Webpack o Babel manualmente.", "Un editor de código (IDE) optimizado para React.", "Es una biblioteca de componentes de UI pre-diseñados."],
-        correct: "Budapest"
+        correct: "Proporciona una configuración inicial completa para una aplicación React sin necesidad de configurar Webpack o Babel manualmente."
     },
     {
         id: 14,
