@@ -36,7 +36,7 @@ exports.generateCertificate = (req, res) => {
     }
 
     // Formatear datos (Oara utilizar las variables como locales)
-    const userName = user.nombreCompleto;
+    const userName = user.nombre;
     const formattedDate = examDate.toLocaleDateString('es-ES', { 
         day: 'numeric', month: 'long', year: 'numeric' 
     });
@@ -156,7 +156,6 @@ exports.generateCertificate = (req, res) => {
         doc.page.height - pageMargin - barHeight,
         { align: 'left' }
     );
-
 
     // Finalizar el documento
     doc.end();
