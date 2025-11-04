@@ -27,7 +27,7 @@ const cargarPregunta = () => {
   const div = document.createElement("div");
   div.className = "card";
   div.innerHTML = `
-                  <p>${p.text}</p>
+                  <p>${parseInt(localStorage.getItem('question')) + 1}.- ${p.text}</p>
                   ${p.options
                     .map((opt) => {
                       const isChecked =
