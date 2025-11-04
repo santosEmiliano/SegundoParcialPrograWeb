@@ -16,7 +16,6 @@ body {
   font-family: "Electrolize", sans-serif;
 }
 
-/*titulo*/
 h1 {
   margin-bottom: 4vh;
   text-align: center;
@@ -42,14 +41,12 @@ button:hover {
   transform: scale(1.05);
 }
 
-/*contenedor con las preguntas*/
 #quizForm {
   width: 80vw;
   min-width: 50vw;
   margin-top: 6vh;
 }
 
-/*contenedoor de las preguntas*/
 .card {
   background: #06031f;
   border: 0.4vh solid rgba(0, 255, 255, 0.3);
@@ -77,13 +74,11 @@ button:hover {
   }
 }
 
-/*titulo de las preguntas*/
 .card p {
   padding: 2vh;
   font-size: 2.2vh;
 }
 
-/*opciones*/
 label {
   display: block;
   cursor: pointer;
@@ -128,7 +123,6 @@ label:hover {
   text-shadow: 0 0 2vh #e67ea3;
 }
 
-/* Cards del resultado */
 #resultado .card {
   text-align: left;
   border-left: 0.8vh solid #49c0ec;

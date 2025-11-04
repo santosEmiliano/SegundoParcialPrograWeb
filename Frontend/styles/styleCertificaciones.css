@@ -1,15 +1,3 @@
-html,
-body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  scroll-snap-type: y proximity;
-  overflow-y: scroll;
-  scroll-behavior: smooth;
-  background: #02000c;
-}
-
-/* contenedor general */
 .container-grid {
   min-height: 100vh;
   display: flex;
@@ -19,7 +7,6 @@ body {
   padding: 5vh 0;
 }
 
-/* tarjeta */
 .card-certificacion {
   display: grid;
   grid-template-columns: 2fr 1fr;
@@ -76,7 +63,6 @@ body {
   background-color: rgba(0, 255, 255, 0.3);
 }
 
-/* descripción */
 .div3 {
   grid-area: 2 / 1 / 3 / 2;
   font-size: 2vh;
@@ -91,7 +77,6 @@ body {
   scrollbar-width: none;
 }
 
-/* examen */
 .div4 {
   grid-area: 3 / 1 / 4 / 2;
   display: flex;
@@ -99,7 +84,6 @@ body {
   align-items: center;
 }
 
-/* pago */
 .div5 {
   grid-area: 3 / 2 / 4 / 3;
   display: flex;
@@ -110,7 +94,6 @@ body {
   color: #a3cc54;
 }
 
-/* botones */
 .pagar,
 .btn-iniciar-examen {
   height: 10vh;

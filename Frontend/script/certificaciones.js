@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const alertaAgotado = () => {
     Swal.fire({
-      title: "Surgió un error: El curso ya no está disponible!",
+      title: "Este curso estará ddisponible a partir del 31 de diciembre de 2025",
       icon: "error",
       confirmButtonText: "Ok",
     });

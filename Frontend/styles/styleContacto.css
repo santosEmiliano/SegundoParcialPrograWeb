@@ -1,15 +1,3 @@
-html,
-body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  animation-name: zoomCard;
-  animation-duration: 1s;
-  animation-direction: normal;
-}
-
 main {
   display: flex;
   flex-direction: column;
@@ -17,7 +5,6 @@ main {
   justify-content: center;
 }
 
-/*títulos*/
 h1 {
   font-size: 4vh;
   margin-bottom: 2vh;
@@ -33,7 +20,6 @@ h6 {
   margin-bottom: 3vh;
 }
 
-/*contenedor formulario*/
 .formulario-container {
   width: 80%;
   min-width: 50%;
@@ -55,7 +41,6 @@ h6 {
   animation: cardGlow 1.5s infinite alternate;
 }
 
-/*formulario grid*/
 form {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -64,7 +49,6 @@ form {
   width: 100%;
 }
 
-/*cascarón div*/
 .div1 {
   grid-area: 1 / 1 / 2 / 2;
   margin-right: 2vh;
@@ -85,7 +69,6 @@ form {
   margin-right: 2vh;
 }
 
-/*títulos*/
 label {
   display: block;
   margin-bottom: 1vh;
@@ -108,7 +91,6 @@ label {
   color: rgba(255, 255, 255, 0.5);
 }
 
-/*botón enviar*/
 .div4 input[type="submit"] {
   background: #00ffff;
   border: none;
