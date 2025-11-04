@@ -1,4 +1,4 @@
-//Array de publicaciones vacio
+const usuarios = require("../model/users.json");
 let publicaciones = [];
 
 const saveMessage = (req, res) => {
@@ -6,7 +6,6 @@ const saveMessage = (req, res) => {
         //Guardamos todo
         const userId = req.userId;
         const mensaje = req.body.mensaje;
-        const correo = req.body.correo
 
         //Chcamos que haya algo
         if (!mensaje) {
@@ -21,11 +20,13 @@ const saveMessage = (req, res) => {
             newId = ultPub.id + 1;
         }
 
+        const userBuscado = usuarios.find(u => u.cuenta === userId);
+
         //Creamos publicacion
         const publicacion = {
             id: newId,
-            userId: userId,
-            correo,
+            nombre: userBuscado.nombre,
+            correo : userId,
             text: mensaje,
             fecha: new Date().toISOString()
         };
@@ -48,15 +49,6 @@ const saveMessage = (req, res) => {
 
 const sendPublications = (req, res) => {
     try {
-        //Array de publicaciones vacio
-        let publicaciones = [];
-
-        //Abrimos el archivo
-        if(fs.existsSync(route)) {
-            const data = fs.readFileSync(route, 'utf8')
-            if (data) publicaciones = JSON.parse(data); //Llenamos el array
-        }
-
         //Enviamos la lista de publicaciones
         res.status(200).json({
             message: "Publicaciones enviadas con exito",

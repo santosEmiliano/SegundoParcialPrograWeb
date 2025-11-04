@@ -1,22 +1,14 @@
-const fs = require('fs');
-const path = require('path')
-
-const route = path.join(__dirname, '..', 'model', 'users.json'); //Sacamos ruta porque con .. te pone la del mugre back
+const usuarios = require("../model/users.json");
 
 const checkBuy = (req, res) => {
-    let usuarios = [];
     let bandera;
     try {
-        if(fs.existsSync(route)) {
-            const data = fs.readFileSync(route, 'utf8')
-            if (data) usuarios = JSON.parse(data); //Llenamos el array
-        }
         const userBuscado = usuarios.find(u => u.cuenta === req.userId);
         if (!userBuscado) return res.status(404).json({ error: "La cuenta del usuario no ha sido encontrado"});
 
         bandera=userBuscado.comprado;
 
-        if(!userBuscado.comprado) return res.status(200).json({
+        if(!userBuscado.comprado) return res.status(402).json({
             message: "Pago no realizado, favor de pagar antes de intentar el examen",
             comprado: bandera
         })
@@ -33,13 +25,8 @@ const checkBuy = (req, res) => {
 }
 
 const checkExam = (req, res) => {
-    let usuarios = [];
     let bandera;
     try {
-        if(fs.existsSync(route)) {
-            const data = fs.readFileSync(route, 'utf8')
-            if (data) usuarios = JSON.parse(data); //Llenamos el array
-        }
         const userBuscado = usuarios.find(u => u.cuenta === req.userId);
         if (!userBuscado) return res.status(404).json({ error: "La cuenta del usuario no ha sido encontrado"});
 
@@ -47,7 +34,7 @@ const checkExam = (req, res) => {
 
         if(!userBuscado.examen) return res.status(403).json({
             message: "Examen no aprobado, favor de mejorar",
-            comprado: bandera
+            examen: bandera
         })
 
     } catch (error) {
@@ -57,25 +44,16 @@ const checkExam = (req, res) => {
 
     return res.status(200).json({
         message: "Examen aprobado, deja de tryhardear ;)",
-        comprado: bandera
+        examen: bandera
     });
 }
 
 const passedRegister = (userId) => {
-    let usuarios = [];
-
     try {
-        if(fs.existsSync(route)) {
-            const data = fs.readFileSync(route, 'utf8')
-            if (data) usuarios = JSON.parse(data); //Llenamos el array
-        }
         const userBuscado = usuarios.find(u => u.cuenta === userId);
         if (!userBuscado) return;
 
         userBuscado.examen = true;
-
-        const textJSON = JSON.stringify(usuarios, null, 2);
-        fs.writeFileSync(route, textJSON);
 
         console.log(`Usuario ${userId} marcado como 'examen: true'.`);
 
@@ -85,21 +63,13 @@ const passedRegister = (userId) => {
 }
  
 const payExam = (req, res) => {
-    let usuarios = [];
     let bandera;
     try {
-        if(fs.existsSync(route)) {
-            const data = fs.readFileSync(route, 'utf8')
-            if (data) usuarios = JSON.parse(data); //Llenamos el array
-        }
         const userBuscado = usuarios.find(u => u.cuenta === req.userId);
         if (!userBuscado) return res.status(404).json({ error: "La cuenta del usuario no ha sido encontrado"});
 
         userBuscado.comprado = true;
         bandera = userBuscado.comprado
-
-        const textJSON = JSON.stringify(usuarios, null, 2);
-        fs.writeFileSync(route, textJSON);
 
     } catch (error) {
         console.error('Error fatal al calificar o registrar el examen:', error);

@@ -3,28 +3,28 @@
     "cuenta": "Jose@correo.com",
     "nombre": "Jose Luis",
     "examen": false,
-    "comprado": true,
+    "comprado": false,
     "contrasena": "Jose123"
   },
   {
     "cuenta": "Harim@correo.com",
     "nombre": "Harim Jesus",
     "examen": false,
-    "comprado": true,
+    "comprado": false,
     "contrasena": "Harim123"
   },
   {
     "cuenta": "Julian@correo.com",
     "nombre": "Julian Emmanuel",
     "examen": false,
-    "comprado": true,
+    "comprado": false,
     "contrasena": "Julian123"
   },
   {
     "cuenta": "Santos@correo.com",
     "nombre": "Emiliano Santos",
     "examen": false,
-    "comprado": true,
+    "comprado": false,
     "contrasena": "Santos123"
   },
   {
