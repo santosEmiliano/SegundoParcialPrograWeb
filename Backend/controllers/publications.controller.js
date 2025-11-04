@@ -1,7 +1,5 @@
-const fs = require('fs');
-const path = require('path')
-
-const route = path.join(__dirname, '..', 'model', 'publications.json'); //Sacamos ruta porque con .. te pone la del mugre back
+//Array de publicaciones vacio
+let publicaciones = [];
 
 const saveMessage = (req, res) => {
     try {
@@ -13,15 +11,6 @@ const saveMessage = (req, res) => {
         //Chcamos que haya algo
         if (!mensaje) {
             return res.status(400).json({ error: 'No vamos a guardar un mensaje vacio' });
-        }
-
-        //Array de publicaciones vacio
-        let publicaciones = [];
-
-        //Abrimos el archivo
-        if(fs.existsSync(route)) {
-            const data = fs.readFileSync(route, 'utf8')
-            if (data) publicaciones = JSON.parse(data); //Llenamos el array
         }
 
         let newId = 0;
@@ -43,12 +32,12 @@ const saveMessage = (req, res) => {
 
         publicaciones.push(publicacion); //Subimos la nueva publicacion
 
-        const textJSON = JSON.stringify(publicaciones, null, 2);
-        fs.writeFileSync(route, textJSON);
+        console.log("--- Nueva publicación registrada ---");
+        console.log(publicaciones);
 
         res.status(201).json({
             message: "Publicacion registrada con exito",
-            publication: publicacion
+            publication: publicaciones
         });
 
     } catch (error) {
