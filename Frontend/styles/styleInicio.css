@@ -75,8 +75,7 @@ main section {
 .grid-cursos .texto {
   padding: 8vh;
   background-color: #040216;
-  border: 0.6vh solid rgb(0, 255, 255);
-  box-shadow: 0 0 3vh rgb(0, 255, 255);
+  
   border-radius: 2vh;
   text-align: justify;
   transition: 0.4s ease;
@@ -121,6 +120,11 @@ main section {
   box-shadow: 0 0 1vh rgb(255, 255, 255), 0 0 2vh rgba(190, 190, 190, 0.7);
   border-radius: 2vh;
   transition: 0.4s ease;
+  view-timeline-name: --reveal;
+  animation-timeline: --reveal;
+  animation-name: fadeIn;
+  animation-fill-mode: both;
+  animation-range: entry 0% cover 100%;
 }
 
 .ventajas-container {
@@ -132,6 +136,11 @@ main section {
   border-radius: 2vh;
   transition: 0.4s ease;
   padding: 3vh;
+  view-timeline-name: --reveal;
+  animation-timeline: --reveal;
+  animation-name: fadeIn;
+  animation-fill-mode: both;
+  animation-range: entry 0% cover 100%;
 }
 
 .pharagraph {
@@ -218,6 +227,15 @@ main section {
   }
 }
 
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 100;
+  }
+}
+
 @keyframes growShrink {
   0% {
     opacity: 0;
@@ -279,8 +297,7 @@ main section {
 .grid-cursos .texto {
   padding: 3vh;
   background-color: #040216;
-  border: 0.6vh solid rgba(0, 255, 255, 0.7);
-  box-shadow: 0 0 3vh rgba(0, 255, 255, 0.7);
+  box-shadow: 0 0 3vh rgba(255, 255, 255, 0.7);
   border-radius: 2vh;
   text-align: justify;
   transition: 0.4s ease;
@@ -367,4 +384,118 @@ main section {
   margin: 2vw 5vw 0 5vw;
   color: rgba(255, 255, 255, 0.8);
   box-shadow: 0 0 15px rgba(255, 255, 255, 1);
+}
+
+/* Animaciones adicionales y estilos dinámicos */
+
+/* Animación de pulso para títulos de los cursos */
+.card-titulo {
+  animation: pulseGlow 3s infinite ease-in-out;
+}
+
+@keyframes pulseGlow {
+  0% {
+    text-shadow: 0 0 1vh aqua;
+  }
+  50% {
+    text-shadow: 0 0 2vh rgb(0, 200, 255);
+  }
+  100% {
+    text-shadow: 0 0 1vh aqua;
+  }
+}
+
+/* Efecto de borde animado en tarjetas */
+.grid-cursos .texto {
+  position: relative;
+  overflow: hidden;
+}
+
+.grid-cursos .texto::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 2vh;
+  padding: 0.2vh;
+  background: linear-gradient(90deg, cyan, magenta, blue, cyan);
+  background-size: 300% 300%;
+  animation: borderFlow 6s linear infinite;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+@keyframes borderFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Efecto flotante suave en comentarios */
+.comentario {
+  animation: floating 4s ease-in-out infinite;
+}
+
+@keyframes floating {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-1vh);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Aparición con fade + slide en testimonios */
+.comentarios-container {
+  animation: slideFade 1.4s ease-out;
+}
+
+@keyframes slideFade {
+  0% {
+    opacity: 0;
+    transform: translateY(4vh);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Sutil efecto parallax en banner */
+.image-fondo {
+  background-attachment: fixed;
+  animation: fadeZoom 2s ease-out;
+}
+
+@keyframes fadeZoom {
+  0% {
+    opacity: 0;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Permite clicks sobre el contenido a pesar del ::before animado */
+.grid-cursos .texto::before {
+  pointer-events: none;
+}
+
+/* Asegura que los enlaces/ botones estén por encima de la capa */
+.grid-cursos .texto a,
+.grid-cursos .texto .btnCursos {
+  position: relative;
+  z-index: 2;
+  cursor: pointer;
 }
