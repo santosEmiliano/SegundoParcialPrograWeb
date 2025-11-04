@@ -182,6 +182,8 @@ const start = async () => {
     if (!respuesta.ok) throw new Error("Error en la respuesta");
     const datos = await respuesta.json();
 
+    console.log(datos.message);
+
     console.log(datos.duration);
     iniciarTimer(datos.duration);
     return datos;
@@ -234,6 +236,8 @@ const submit = async (respuestasUsuario) => {
     });
 
     const data = await res.json();
+
+    console.log(data.message);
 
     if (!res.ok) {
       await Swal.fire({
