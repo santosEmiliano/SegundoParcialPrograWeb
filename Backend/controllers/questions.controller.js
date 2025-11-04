@@ -68,15 +68,22 @@ const submitAnswers = (req, res) => {
         if (approved) {
             passedRegister(req.userId);
           // AQUI SE LLAMA A passedRegister en caso de que queramos que solo se registre como hecho el examen si lo aprobó
-        }
-
-        return res.status(200).json({
-            message: "Respuestas evaluadas.",
-            score: score,
-            total: 8,
-            details: details,
-            approved
-        });
+            return res.status(200).json({
+                message: "Aprobó el examen. 💋",
+                score: score,
+                total: 8,
+                details: details,
+                approved
+            });
+        } else {
+            return res.status(200).json({
+                message: "Reprobó el Examen. 👻",
+                score: score,
+                total: 8,
+                details: details,
+                approved
+            });
+        }        
     } catch (error) {
         console.error('Error fatal al calificar o registrar el examen:', error);
         return res.status(500).json({ error: 'Error interno del servidor al procesar las respuestas' });

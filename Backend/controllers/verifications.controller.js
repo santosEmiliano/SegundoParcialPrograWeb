@@ -50,7 +50,7 @@ const passedRegister = (userId) => {
     try {
         examenesRealizados.set(userId, new Date());
 
-        console.log(`Usuario ${userId} marcado como 'examen: true' en la memoria.`);
+        console.log(`Usuario ${userId} marcado como 'examen: true'.`);
 
     } catch (error) {
         console.error('Error en la actualizacion de estado de usuario:', error);
