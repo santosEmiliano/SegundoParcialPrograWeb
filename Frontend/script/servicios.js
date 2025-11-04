@@ -76,7 +76,7 @@ const comprar = async () => {
     });
     return;
   }
-  
+
   if (await verificarExamenComprado()) {
     Swal.fire({
       title: "Ya has comprado esta certificación!! Disfrútala",
@@ -200,18 +200,62 @@ function iniciarTimer(duracion) {
 }
 
 const submit = async (respuestasUsuario) => {
-  const res = await fetch("http://localhost:3000/api/submit", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
-    },
-    body: JSON.stringify({ answers: respuestasUsuario }),
-  });
+  try {
+    const res = await fetch("http://localhost:3000/api/submit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+      body: JSON.stringify({ answers: respuestasUsuario }),
+    });
 
-  const data = await res.json();
+    const data = await res.json();
 
-  console.log(data);
+    console.log(data);
+  } catch (err) {
+    console.error("Error de red al verificar compra:", err);
+    return;
+  }
+};
+
+const mandarComentario = async (_comentario, _correo) => {
+  try {
+    const res = await fetch("http://localhost:3000/api/captura", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+        // 1. AÑADE EL HEADER 'CONTENT-TYPE'
+        "Content-Type": "application/json", 
+      },
+      // 2. CONVIERTE EL OBJETO A STRING CON JSON.stringify()
+      body: JSON.stringify({ 
+        mensaje: _comentario,
+        correo: _correo,
+      }),
+    });
+
+    if (res.ok) {
+      Swal.fire({
+        title: "Tu comentario fue guardado, gracias por confiar en nosotros!!",
+        icon: "success", // <-- Corregido (era "Success" con mayúscula)
+        confirmButtonText: "Ok",
+      });
+    } else {
+      // Opcional: Manejar errores del servidor que no son 500
+      const errorData = await res.json();
+      Swal.fire({
+        title: "Error al enviar",
+        text: errorData.error || "No se pudo guardar el comentario.",
+        icon: "error",
+        confirmButtonText: "Ok",
+      });
+    }
+  } catch (err) {
+    // Corregido: El log ahora es más específico
+    console.error("Error de red al mandar comentario:", err); 
+    return false;
+  }
 };
 
 function actualizarSesion() {
@@ -246,7 +290,8 @@ const servicios = {
   submit,
   actualizarSesion,
   verificarExamenComprado,
-  verificarUsuario
+  verificarUsuario,
+  mandarComentario,
 };
 
 export default servicios;

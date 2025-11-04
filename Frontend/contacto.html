@@ -52,10 +52,11 @@
       </section>
       <section>
         <div class="formulario-container">
-          <form action="">
+          <form id="formularioContacto">
             <div class="div1">
               <label for="">Ingresa tu Nombre:</label>
               <input
+                id="nombre"
                 class="textFrom"
                 type="text"
                 placeholder="ejemplo: Julián"
@@ -65,6 +66,7 @@
             <div class="div2">
               <label for="">Ingresa tu correo electrónico:</label>
               <input
+                id="correo"
                 class="textFrom"
                 type="text"
                 placeholder="ejemplo: Juliantonto@edu.uaa.mx"
@@ -74,6 +76,7 @@
             <div class="div3">
               <label for="">Ingresa tu comentario</label>
               <textarea
+                id="comentario"
                 class="textFrom"
                 placeholder="Escribe tu comentario aquí"
                 rows="6"
@@ -104,5 +107,6 @@
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="script/app.js" type="module"></script>
+    <script src="script/contacto.js" type="module"></script>
   </body>
 </html>
