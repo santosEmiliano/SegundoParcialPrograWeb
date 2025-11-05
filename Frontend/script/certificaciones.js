@@ -11,18 +11,42 @@ document.addEventListener("DOMContentLoaded", () => {
     };
   }
 
-  const botonesAgotado = document.querySelectorAll(".btnError");
+  const botonesAgotadoTS = document.querySelectorAll(".btnErrorTS");
+  const botonesAgotadoAsm = document.querySelectorAll(".btnErrorAsm");
+  const botonesAgotadoC = document.querySelectorAll(".btnErrorC");
 
-  const alertaAgotado = () => {
-    Swal.fire({
-      title: "Este curso estará disponible a partir del 31 de diciembre de 2025",
-      icon: "error",
-      confirmButtonText: "Ok",
+
+  botonesAgotadoTS.forEach((b) => {
+    b.addEventListener("click", () => {
+      Swal.fire({
+        title:
+          "Este curso estará disponible a partir del 31 de diciembre de 2025",
+        icon: "error",
+        confirmButtonText: "Ok",
+      });
     });
-  };
+  });
 
-  botonesAgotado.forEach((b) => {
-    b.addEventListener("click", alertaAgotado);
+  botonesAgotadoAsm.forEach((b) => {
+    b.addEventListener("click", () => {
+      Swal.fire({
+        title:
+          "Este curso estará disponible a partir del 24 de diciembre de 2025",
+        icon: "error",
+        confirmButtonText: "Ok",
+      });
+    });
+  });
+
+   botonesAgotadoC.forEach((b) => {
+    b.addEventListener("click", () => {
+      Swal.fire({
+        title:
+          "Este curso estará disponible a partir del 12 de diciembre de 2025",
+        icon: "error",
+        confirmButtonText: "Ok",
+      });
+    });
   });
 
   // Funcion anonima para verificar si el usuario esta logeado, ya paso, aprobo o no
@@ -30,31 +54,30 @@ document.addEventListener("DOMContentLoaded", () => {
     if (servicios.verificarUsuario()) {
       // Si el usuario está logueado, checamos si ya pasó
       const yaPaso = await servicios.verificarExamenRealizado();
-    
+
       if (yaPaso) {
-         // SÍ APROBÓ: Mostramos "Descargar"
-         if (btnDescargar) btnDescargar.style.display = 'block';
+        // SÍ APROBÓ: Mostramos "Descargar"
+        if (btnDescargar) btnDescargar.style.display = "block";
       } else {
         // NO HA APROBADO: "Descargar" esta oculto
-        if (btnDescargar) btnDescargar.style.display = 'none';
+        if (btnDescargar) btnDescargar.style.display = "none";
       }
     } else {
       // NO ESTÁ LOGUEADO: "Descargar" esta oculto
-      if (btnDescargar) btnDescargar.style.display = 'none';
+      if (btnDescargar) btnDescargar.style.display = "none";
     }
   })();
 
   // Mandamos a llamar a la funcion para descargar Certificado
   if (btnDescargar) {
     btnDescargar.onclick = () => {
-     servicios.descargarCertificado();
+      servicios.descargarCertificado();
     };
   }
 
   document.getElementById("btnIniciarExamen").onclick = async () => {
     if (servicios.verificarUsuario()) {
       if (await servicios.verificarExamenComprado()) {
-        
         if (!(await servicios.verificarExamenRealizado())) {
           window.location.href = "examen.html";
         } else {
@@ -65,7 +88,6 @@ document.addEventListener("DOMContentLoaded", () => {
             confirmButtonText: "Ok",
           });
         }
-
       } else {
         Swal.fire({
           title: "Debes comprar la certificación primero!",
