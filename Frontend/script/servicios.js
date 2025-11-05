@@ -23,6 +23,8 @@ const login = async (usuario, contrasena) => {
           title: "Sesión Iniciada Con Éxito!!",
           icon: "success",
           confirmButtonText: "Ok",
+        }).then (() =>{
+          window.location.href = "index.html";
         });
         localStorage.setItem("token", data.token);
         localStorage.setItem("cuenta", usuario);
@@ -62,7 +64,10 @@ const logout = async () => {
         title: "Sesión Cerrada Con Éxito!!",
         icon: "success",
         confirmButtonText: "Ok",
+      }).then (() =>{
+        window.location.href = "index.html";
       });
+      
     } else {
       const data = await res.json();
       Swal.fire({
